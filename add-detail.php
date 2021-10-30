@@ -125,7 +125,6 @@ if($_GET["action"]=="preview"){
             
             <div class="services">
                 <button id="simple" class="services-item view-data">Elanı irəli çək</button> 
-                <button id="premium" class="services-item view-data">Elanı Premium et</button> 
                 <button id="vip" class="services-item view-data">Elanı VİP et</button> 
             </div>
         </div>
@@ -310,14 +309,22 @@ if($_GET["action"]=="preview"){
       </div>
       <div class="modal-body">
         <p id="textAdd"></p>
-        <a href="../payment" class="btn btn-success">Ödəniş etmə qaydaları</a>
-      </div>
-      <div class="modal-footer">
-        <?php
-            $selectUsers=mysqli_query($connect,"SELECT * FROM users WHERE user_status='admin'");
-            $fetchUser=mysqli_fetch_array($selectUsers)
-        ?>
-        <span><b>Tel: </b><?php echo $fetchUser['user_phone'] ?></span></br>
+
+        <form action="">
+            <h6>Xidmət Növü</h6>
+            
+            <div id="priceAdvert"></div>
+
+            <h6 class="mt-4">Ödəniş Üsulu</h6>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="radioBank" name="radioBank" class="custom-control-input">
+                <label class="custom-control-label" for="radioBank">Bank kartı</label>
+            </div>
+
+            <button type="submit" class="btn btn-success mt-4 w-100">Ödə</button>
+            <p class="text-muted mt-2 text-center mb-0" style="font-size:14px">Ödə düyməsini sıxmaqla siz saytın istifadəçi razılaşması qaydalarını qəbul etdiyinizi təsdiqləmiş olursunuz</p>
+        </form>
+        
       </div>
     </div>
   </div>

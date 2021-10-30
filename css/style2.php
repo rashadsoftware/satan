@@ -40,6 +40,11 @@ body {
 a:hover {
 	text-decoration: none;
 }
+button.close:focus{
+	outline:none !important;
+	box-shadow:none !important;
+	border:none !important
+}
 button.ownBTN:focus,
 button.ownBTN {
 	outline: 1px solid var(--main-color);
@@ -473,6 +478,9 @@ h5.rulers::before {
 	text-decoration: underline;
 }
 /* form */
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before{
+	background-color: var(--main-color);
+}
 .form-control:focus,
 button:focus {
 	box-shadow: none !important;
@@ -643,6 +651,7 @@ input[type="file"] {
 	text-align: center;
 	line-height: 65px;
 	font-size: 23px;
+	border-radius:4px
 }
 .price-container .services {
 	display: inline-block;

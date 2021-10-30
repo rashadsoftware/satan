@@ -106,6 +106,7 @@
 						success: function (data) {
 							$("#exampleModalLabel").text(data.title);
 							$("#textAdd").html(data.text);
+							$("#priceAdvert").html(data.price);
 							$("#exampleModal").modal("show");
 						},
 					});
