@@ -25,7 +25,7 @@
             </div>
             '; 
         } else {
-            $data["text"]="Elanınız ana səhifədə vip elan bölməsində təsadüfi qaydada göstəriləcək və hər 6 saatdan bir axtarış və son elanlar bölməsində birinci yerə qalxacaq"; 
+            $data["text"]="Elanınız ana səhifədəki və axtarış nəticələrindəki VIP bölməsində təsadüfi qaydada göstəriləcək."; 
 
             $data["price"]='
             <div class="custom-control custom-radio">

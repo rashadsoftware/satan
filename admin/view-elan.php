@@ -22,7 +22,9 @@
 		<script>
             $(function(){
                 $(".page-title").html("Elan Detayları");
-                $("#elanlar").addClass("active");
+                $("#opt_list_adverts").addClass("menu-open");
+				$("#adverts").addClass("active");
+                $("#list_elanlar").addClass("active");
             });
         </script>
 		<style>

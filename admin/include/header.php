@@ -165,20 +165,35 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="elanlar" class="nav-link" id="elanlar">
-                        <i class="nav-icon fas fa-copy"></i>
+                    <li class="nav-item" id="opt_list_adverts">
+                        <a href="#" class="nav-link" id="adverts">
+                            <i class="nav-icon fas fa-copy"></i>
                             <p>
                                 Elanlar
-                                <?php
-                                    $elanlar_liste=mysqli_query($connect, "SELECT * FROM elan WHERE elan_status='waiting' ");
-                                    $countElanlar=mysqli_num_rows($elanlar_liste);
-                                    if($countElanlar > 0){ ?>
-                                        <span class="badge badge-info right"><?php echo $countElanlar ?></span>
-                                <?php   }
-                                ?>
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="elanlar" class="nav-link" id="list_elanlar">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p class="text-capitalize">Elanları Listələ</p>
+                                    <?php
+                                        $elanlar_liste=mysqli_query($connect, "SELECT * FROM elan WHERE elan_status='waiting' ");
+                                        $countElanlar=mysqli_num_rows($elanlar_liste);
+                                        if($countElanlar > 0){ ?>
+                                            <span class="badge badge-info right"><?php echo $countElanlar ?></span>
+                                    <?php   }
+                                    ?>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="elanlar-status" class="nav-link" id="list_elanlar_status">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p class="text-capitalize">Status dəyişmə</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item" id="opt_list_categories">
                         <a href="#" class="nav-link" id="categories">

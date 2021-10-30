@@ -15,7 +15,9 @@
 		<script>
             $(function(){
                 $(".page-title").html("Elanlar");
-                $("#elanlar").addClass("active");
+                $("#opt_list_adverts").addClass("menu-open");
+				$("#adverts").addClass("active");
+                $("#list_elanlar").addClass("active");
             });
         </script>
 	</head>
