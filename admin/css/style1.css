@@ -1,0 +1,19 @@
+/* password eye */
+.passw-eye {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	cursor: pointer;
+	color: #b3b3b3;
+}
+
+/* table tr td center */
+tr,
+td {
+	vertical-align: middle !important;
+}

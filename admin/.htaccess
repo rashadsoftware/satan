@@ -1,0 +1,6 @@
+RewriteEngine On
+
+# link -> from xxxx.php to xxxx
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php
