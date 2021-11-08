@@ -689,6 +689,32 @@ input[type="file"] {
 .price-container .services .services-item:focus {
 	outline: none;
 }
+.price-container .services .services-item-active {
+	position: relative;
+	display: inline-block;
+	margin-top: 15px;
+	border-radius: 4px;
+	border: 1px solid var(--main-color);
+	padding: 9px;
+	background-color: var(--main-color);
+	color: #fff;
+	line-height: 22px;
+	text-align: center;
+	margin-right: 5px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+}
+.price-container .services .services-item-active span{
+	position: absolute;
+    top: -18px;
+    right: -7px;
+    color: white;
+    background: green;
+    padding: 3px 6px;
+    border-radius: 3px;
+}
 /* contact person */
 .person-container {
 	background-color: #fff;

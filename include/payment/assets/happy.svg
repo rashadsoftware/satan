@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512px" height="512px" class=""><g><circle style="fill:#efb21b" cx="256" cy="256" r="256" data-original="#FFCA28" class="" data-old_color="#FFCA28"/><g>
+	<circle style="fill:#fff5f9" cx="160" cy="192" r="32" data-original="#6D4C41" class="active-path" data-old_color="#6D4C41"/>
+	<circle style="fill:#fff5f9" cx="352" cy="192" r="32" data-original="#6D4C41" class="active-path" data-old_color="#6D4C41"/>
+	<path style="fill:#fff5f9" d="M256,416c-42.752,0-82.912-16.672-113.152-46.88c-6.24-6.24-6.24-16.384,0-22.624   s16.384-6.24,22.624,0c48.352,48.384,132.64,48.384,181.024,0c6.24-6.24,16.384-6.24,22.624,0s6.24,16.384,0,22.624   C338.912,399.328,298.752,416,256,416z" data-original="#6D4C41" class="active-path" data-old_color="#6D4C41"/>
+</g></g> </svg>

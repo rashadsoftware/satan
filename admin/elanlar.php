@@ -95,7 +95,6 @@
                                                                         <th class="text-center">İcra vaxtı</th>
                                                                         <th class="text-center">Bitmə vaxtı</th>
                                                                         <th class="text-center">Status</th>
-                                                                        <th class="text-center">Köçürmələr</th>
                                                                         <th class="text-center">Əməliyyatlar</th>
                                                                     </tr>
                                                                 </thead>
@@ -133,17 +132,6 @@
                                                                                 <td class="text-center text-primary">Gözləmə rejimindədir</td>
                                                                             <?php }
                                                                             ?>
-                                                                            <td class="text-center">
-                                                                                <button id="<?php echo $elan["elan_id"] ?>" class="btn btn-info simple">
-                                                                                    <i class="fas fa-vial"></i>
-                                                                                </button>
-                                                                                <button id="<?php echo $elan["elan_id"] ?>" class="btn btn-secondary prmium">
-                                                                                    <i class="far fa-gem"></i>
-                                                                                </button>
-                                                                                <button id="<?php echo $elan["elan_id"] ?>" class="btn btn-warning vp">
-                                                                                <i class="fas fa-crown"></i>
-                                                                                </button>
-                                                                            </td>
                                                                             <td class="text-center">
                                                                                 <a href="view-elan?id=<?php echo $elan["elan_id"] ?>&action=view" class="btn btn-secondary">
                                                                                     <i class="fa fa-eye"></i>

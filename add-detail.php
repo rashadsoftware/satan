@@ -47,6 +47,12 @@ if($_GET["action"]=="preview"){
         $(document).prop('title', 'satan.az | <?php echo $explodeUri ?>');
     })
 </script>
+
+<style>
+    .btn-success:focus{
+        border:1px solid transparent !important
+    }
+</style>
 <section style="margin:100px 0 50px 0">
     <div class="container" style="padding-right:2.6rem; padding-left:2rem">
         <div class="row mb-3">
@@ -109,7 +115,7 @@ if($_GET["action"]=="preview"){
                     </div>
                 <?php }else { ?>
                     <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                        <img src="../img/advert/<?php echo $itemImgElan2['img_path'] ?>" alt="<?php echo $fetchArray["elan_name"] ?>" class="w-75 h-75 center_watermark_once" >
+                        <img src="../img/advert/<?php echo $itemImgElan2['img_path'] ?>" alt="<?php echo $fetchArray["elan_name"] ?>" class="w-auto h-75 center_watermark_once" >
                     </div>
                 <?php } ?>
             </div>
@@ -124,8 +130,29 @@ if($_GET["action"]=="preview"){
                 ?>
             
             <div class="services">
-                <button id="simple" class="services-item view-data">Elanı irəli çək</button> 
-                <button id="vip" class="services-item view-data">Elanı VİP et</button> 
+                <?php
+                    $elanForward=mysqli_query($connect,"SELECT * FROM forward WHERE elanID='$IDElan' AND forward_key='forward' ");
+                    if(mysqli_num_rows($elanForward) > 0){ ?>
+                        <div class="services-item-active">
+                            Elanı irəli çək
+                            <span>aktivdir</span>
+                        </div>
+                <?php } else { ?>
+                    <button id="simple" class="services-item view-data">Elanı irəli çək</button>
+                <?php  }
+                ?>
+
+                <?php
+                    $elanVIP=mysqli_query($connect,"SELECT * FROM forward WHERE elanID='$IDElan' AND forward_key='vip' ");
+                    if(mysqli_num_rows($elanVIP) > 0){ ?>
+                        <div class="services-item-active">
+                            Elanı VIP et
+                            <span>aktivdir</span>
+                        </div>
+                <?php } else { ?>
+                    <button id="vip" class="services-item view-data">Elanı VIP et</button>
+                <?php  }
+                ?> 
             </div>
         </div>
         <div class="row">
@@ -310,18 +337,20 @@ if($_GET["action"]=="preview"){
       <div class="modal-body">
         <p id="textAdd"></p>
 
-        <form action="">
-            <h6>Xidmət Növü</h6>
-            
+        <form id="formPayment">            
+            <h6>Xidmət Növü</h6>            
             <div id="priceAdvert"></div>
-
             <h6 class="mt-4">Ödəniş Üsulu</h6>
             <div class="custom-control custom-radio">
-                <input type="radio" id="radioBank" name="radioBank" class="custom-control-input">
+                <input type="radio" id="radioBank" name="radioBank" class="custom-control-input" value="card">
                 <label class="custom-control-label" for="radioBank">Bank kartı</label>
             </div>
-
-            <button type="submit" class="btn btn-success mt-4 w-100">Ödə</button>
+            <input type="hidden" name="elanID" value="<?php echo $fetchArray["elan_id"] ?>">  
+            <button type="submit" class="btn btn-success mt-4 w-100">
+                <span id="btnText">Ödə</span>
+                <img src="../img/loading.gif" alt="loading" width="30" style="display:none" class="loading mx-auto">
+            </button>
+            <div class="alert alert-danger mt-2 text-center" id="errorText" style="display:none"></div>
             <p class="text-muted mt-2 text-center mb-0" style="font-size:14px">Ödə düyməsini sıxmaqla siz saytın istifadəçi razılaşması qaydalarını qəbul etdiyinizi təsdiqləmiş olursunuz</p>
         </form>
         
@@ -329,6 +358,108 @@ if($_GET["action"]=="preview"){
     </div>
   </div>
 </div>
+
+<script>
+    $(function(){
+        $("#formPayment").submit(function(e){
+            e.preventDefault();
+
+            var card=$('input[name=radioBank]:checked');
+            var textError=$("#errorText");
+
+            if(card.length > 0){
+                textError.css("display", "none");
+                textError.text("");  
+
+                var radioName=$("#priceAdvert input:radio").attr("name");     
+                
+                if(radioName == "radioPriceSimple"){
+                    var priceSimple=$('input[name=radioPriceSimple]:checked');
+
+                    if(priceSimple.length > 0){
+                        textError.css("display", "none");
+                        textError.text("");  
+
+                        $.ajax({
+                            url: "../include/payment/payment.php",
+                            type: "post",
+                            data: $(this).serialize(),
+                            dataType: "json",
+                            beforeSend: function () {
+                                $(".loading").css("display", "block");
+                                $("#btnText").css("display", "none");
+                            },
+                            success: function (data) {
+                                if (data.ok) {
+                                    $("#errorText").removeClass("alert-danger");
+                                    $("#errorText").addClass("alert-success");
+                                    setTimeout(function () {
+                                        location.reload();
+                                    }, 2000);
+                                } else {
+                                    $("#errorText").removeClass("alert-success");
+                                    $("#errorText").addClass("alert-danger");
+                                }
+
+                                $("#errorText").css("display", "block");
+                                $("#errorText").html(data.text);
+
+                                $(".loading").css("display", "none");
+                                $("#btnText").css("display", "block");
+                            },
+                        });
+                    } else {
+                        textError.css("display", "block");
+                        textError.text("Elanı irəli çəkmək üçün hər hansı bir xidmət növü seçin");
+                    }
+                } else {
+                    var priceVip=$('input[name=radioPriceVIP]:checked');
+
+                    if(priceVip.length > 0){
+                        textError.css("display", "none");
+                        textError.text("");  
+
+                        $.ajax({
+                            url: "../include/payment/payment.php",
+                            type: "post",
+                            data: $(this).serialize(),
+                            dataType: "json",
+                            beforeSend: function () {
+                                $(".loading").css("display", "block");
+                                $("#btnText").css("display", "none");
+                            },
+                            success: function (data) {
+                                if (data.ok) {
+                                    $("#errorText").removeClass("alert-danger");
+                                    $("#errorText").addClass("alert-success");
+                                    setTimeout(function () {
+                                        location.reload();
+                                    }, 2000);
+                                } else {
+                                    $("#errorText").removeClass("alert-success");
+                                    $("#errorText").addClass("alert-danger");
+                                }
+
+                                $("#errorText").css("display", "block");
+                                $("#errorText").html(data.text);
+
+                                $(".loading").css("display", "none");
+                                $("#btnText").css("display", "block");
+                            },
+                        });
+                    } else {
+                        textError.css("display", "block");
+                        textError.text("Elanı vip etmək üçün hər hansı bir xidmət növü seçin");
+                    }
+                }
+            } else {
+                textError.css("display", "block");
+                textError.text("Ödəniş üçün kart seçməlisiniz");
+            }
+            
+        });
+    })
+</script>
 
 <?php
     include("include/footerExtra.php");

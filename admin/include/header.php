@@ -43,6 +43,10 @@
                 } 
                 $countDeadlineHeader=count($arrayTimePUsh);
 
+                foreach($arrayTimePUsh as $idElan){
+                    mysqli_query($connect,"UPDATE elan SET elan_status='deactive' WHERE elan_id = '$idElan'");
+                }
+
                 $toplamBildiris=$countElanlarHeader+$countDeadlineHeader // burada bildirisler toplanir
             ?>
             <!-- Notifications Dropdown Menu -->
@@ -171,6 +175,14 @@
                             <p>
                                 Elanlar
                                 <i class="right fas fa-angle-left"></i>
+                                <?php
+                                    $elanlar_liste=mysqli_query($connect, "SELECT * FROM elan WHERE elan_status='waiting' ");
+                                    $countElanlar=mysqli_num_rows($elanlar_liste);
+                                    if($countElanlar > 0){ ?>
+                                        <span class="badge badge-info right"><?php echo $countElanlar ?></span>
+                                <?php   }
+                                ?>
+                                
                             </p>
                         </a>
                         <ul class="nav nav-treeview">

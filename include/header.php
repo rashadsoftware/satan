@@ -4,6 +4,43 @@
 	include("include/function.php");
 	$company_list=mysqli_query($connect, "SELECT *  FROM companies WHERE company_status='main' ");
 	$company=mysqli_fetch_array($company_list);
+
+	// count deadline ===================================> 
+	$nowTime=time();  // current time
+	$arrayTimePUsh=[];
+	 
+	$deadline_list_one=mysqli_query($connect, "SELECT *  FROM deadline "); // change timestamp to unix time
+	while($deadline_one=mysqli_fetch_array($deadline_list_one)){
+
+		$unixElanTime=strtotime($deadline_one["deadline_time"]);
+		$idDeadlineElan=$deadline_one["elan_id"];
+
+		if($nowTime > $unixElanTime){
+			array_push($arrayTimePUsh, $idDeadlineElan); 
+		}
+	} 
+	$countDeadlineHeader=count($arrayTimePUsh);
+
+	foreach($arrayTimePUsh as $idElan){
+		mysqli_query($connect,"UPDATE elan SET elan_status='deactive' WHERE elan_id = '$idElan'");
+	}
+
+	// zaman bitibse vip elanlari viplikden cixarma
+	$vipElanHeader=array();
+	$all_vip_elan_header=mysqli_query($connect, "SELECT *  FROM forward WHERE forward_key='vip' AND forward_status='active' ");
+    while($elan_vip_header=mysqli_fetch_array($all_vip_elan_header)){
+        $elanID_header=$elan_vip_header["elanID"];
+		$elanTime_header=$elan_vip_header["forward_time"];
+		$elan_forwardValue_header=$elan_vip_header["forward_value"];
+
+		$diff=date_diff(date_create($elanTime_header), date_create($nowTime));
+
+		if($diff->d != 30){
+			if($diff->d > $elan_forwardValue_header){
+				mysqli_query($connect,"UPDATE forward SET forward_status='passive' WHERE elanID = '$elanID_header' AND forward_key='vip' ");
+			}
+		}		
+    }
 ?>
 <!DOCTYPE html>
 <html lang="az">

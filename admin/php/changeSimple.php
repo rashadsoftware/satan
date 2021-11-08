@@ -1,22 +1,40 @@
-<?php
-	
-	if(isset($_POST["action"])){
-		
-		include("../include/connectDB.php");
-		
+<?php	
+	if(isset($_POST)){
+        include("../include/connectDB.php");
+
         $data=array();
+		
+        $elanID=$_POST["elanID"];
+        $action=$_POST["action"];
+        $dataID=$_POST["dataID"];
 
-        $elanTime=date('Y-m-d H:i:s');
-        $deadlineTime=strtotime("+1 month");
-        $dealdline=date('Y-m-d H:i:s', $deadlineTime);
-        
-        $updateCity=mysqli_query($connect,"UPDATE elan SET elan_time='$elanTime' WHERE elan_id = '".$_POST["idElan"]."' AND elan_status='active' ");
+        $query=mysqli_query($connect, "SELECT * FROM forward WHERE elanID = '$elanID' AND forward_key = 'simple'");
 
-        if($updateCity){
-            $updateDeadlineCreate=mysqli_query($connect,"UPDATE deadline SET deadline_time='$dealdline' WHERE elan_id = '".$_POST["idElan"]."' ");
+        if(mysqli_num_rows($query) > 0){
+            $dataElan=mysqli_fetch_array($query);
 
-            if($updateDeadlineCreate){
+            if($dataElan["forward_status"] == "active"){
+                $data["text"]="Elan ".$dataElan["forward_key"]." statusu olaraq aktivdir. Başqa zaman üçün yenidən yoxlayın";
+            
+                echo json_encode($data);
+            } else {
+                $updateForward=mysqli_query($connect,"UPDATE forward SET forward_value='$dataID', forward_status='active' WHERE elanID = '$elanID' AND forward_key = 'simple' ");
 
+                if($updateForward){
+                    $data["ok"]="ok";
+                    $data["text"]="Elanınız başarılı şəkildə irəli çəkildi";
+                            
+                    echo json_encode($data);
+                } else {
+                    $data["text"]="Bağlantı zamanı xəta yarandı. Yenidən cəhd edin.";
+                
+                    echo json_encode($data);
+                }
+            }            
+        } else {
+            $addForward = mysqli_query($connect,"INSERT IGNORE INTO forward (elanID, forward_key, forward_value, forward_status) VALUES ('$elanID', '$action', '$dataID', 'active')" );
+
+            if($addForward){
                 $data["ok"]="ok";
                 $data["text"]="Elanınız başarılı şəkildə irəli çəkildi";
                         
@@ -26,13 +44,10 @@
             
                 echo json_encode($data);
             }
-        } else {
-            $data["text"]="Çevrilmə zamanı xəta yarandı. Yenidən cəhd edin!";
-                            
-            echo json_encode($data);
         }
         
         mysqli_close($connect);
+
 	}
 	
 ?>

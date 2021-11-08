@@ -12,15 +12,15 @@
 
             $data["price"]='
             <div class="custom-control custom-radio">
-                <input type="radio" id="radioPriceSimple1" name="radioPriceSimple" class="custom-control-input">
+                <input type="radio" id="radioPriceSimple1" name="radioPriceSimple" class="custom-control-input" value="1" >
                 <label class="custom-control-label" for="radioPriceSimple1">8 dəfə (6 saatdan bir) - 1 AZN</label>
             </div>
             <div class="custom-control custom-radio mt-2">
-                <input type="radio" id="radioPriceSimple2" name="radioPriceSimple" class="custom-control-input">
+                <input type="radio" id="radioPriceSimple2" name="radioPriceSimple" class="custom-control-input" value="2" >
                 <label class="custom-control-label" for="radioPriceSimple2">20 dəfə (6 saatdan bir) - 2 AZN</label>
             </div>
             <div class="custom-control custom-radio mt-2">
-                <input type="radio" id="radioPriceSimple3" name="radioPriceSimple" class="custom-control-input">
+                <input type="radio" id="radioPriceSimple3" name="radioPriceSimple" class="custom-control-input" value="3" >
                 <label class="custom-control-label" for="radioPriceSimple3">40 dəfə (6 saatdan bir) - 3 AZN</label>
             </div>
             '; 
@@ -29,15 +29,15 @@
 
             $data["price"]='
             <div class="custom-control custom-radio">
-                <input type="radio" id="radioPriceVIP1" name="radioPriceVIP" class="custom-control-input">
+                <input type="radio" id="radioPriceVIP1" name="radioPriceVIP" class="custom-control-input" value="5" >
                 <label class="custom-control-label" for="radioPriceVIP1">10 gün - 5 AZN</label>
             </div>
             <div class="custom-control custom-radio mt-2">
-                <input type="radio" id="radioPriceVIP2" name="radioPriceVIP" class="custom-control-input">
+                <input type="radio" id="radioPriceVIP2" name="radioPriceVIP" class="custom-control-input" value="8" >
                 <label class="custom-control-label" for="radioPriceVIP2">20 gün - 8 AZN</label>
             </div>
             <div class="custom-control custom-radio mt-2">
-                <input type="radio" id="radioPriceVIP3" name="radioPriceVIP" class="custom-control-input">
+                <input type="radio" id="radioPriceVIP3" name="radioPriceVIP" class="custom-control-input" value="12" >
                 <label class="custom-control-label" for="radioPriceVIP3">30 gün - 12 AZN</label>
             </div>
             '; 
