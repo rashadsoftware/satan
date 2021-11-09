@@ -146,6 +146,9 @@ button.ownBTN {
 .note-editable{
 	background:white !important
 }
+.center_watermark_once{
+	width:60%
+}
 
 /* [All Settings] 
 =======================================================> */
@@ -1212,6 +1215,9 @@ footer {
 	}
 }
 @media (max-width:991px){
+	.center_watermark_once{
+		width:80%
+	}
 	.card-title{
 		font-size: 1.1rem;
 	}

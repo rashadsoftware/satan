@@ -26,19 +26,19 @@
 	}
 
 	// zaman bitibse vip elanlari viplikden cixarma
-	$vipElanHeader=array();
 	$all_vip_elan_header=mysqli_query($connect, "SELECT *  FROM forward WHERE forward_key='vip' AND forward_status='active' ");
     while($elan_vip_header=mysqli_fetch_array($all_vip_elan_header)){
         $elanID_header=$elan_vip_header["elanID"];
 		$elanTime_header=$elan_vip_header["forward_time"];
 		$elan_forwardValue_header=$elan_vip_header["forward_value"];
 
-		$diff=date_diff(date_create($elanTime_header), date_create($nowTime));
-
-		if($diff->d != 30){
-			if($diff->d > $elan_forwardValue_header){
-				mysqli_query($connect,"UPDATE forward SET forward_status='passive' WHERE elanID = '$elanID_header' AND forward_key='vip' ");
-			}
+		$now=date("d", strtotime($nowTime));
+		$elanTime=date("d", strtotime($elanTime_header));
+		
+		$diff=$now-$elanTime;
+		
+		if($diff == $elan_forwardValue_header){
+			mysqli_query($connect,"UPDATE forward SET forward_status='passive' WHERE elanID = '$elanID_header' AND forward_key='vip' ");	
 		}		
     }
 ?>
@@ -48,14 +48,14 @@
         <!-- Meta tags -->
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="author" content="Rashad Alakbarov, 0558215673">
 		<meta name="google-site-verification" content="0Or9agMpN1VESn6-jhxSJIyKkMHDFmIyQndYzJSUBR8" />
 		<meta name="description" content="Pulsuz elanlar saytı">
 		<meta name="keywords" content="pulsuz elanlar, elanlar, bedava, pulsuz, elan, elanlar, yeni elanlar, avtomobil, daşınmaz əmlak">
 		<meta http-equiv="refresh" content="1800">
 		<meta name="revisit-after" content="1 days">
-		<meta data-rh=”true” id=”meta-description” name=”description” content="Pulsuz Elan Yerləşdir - Maşın, Mənzil, Telefon, Geyim, Məişət texnikası...">
+		<meta data-rh="true" id="meta-description" name="description" content="Pulsuz Elan Yerləşdir - Maşın, Mənzil, Telefon, Geyim, Məişət texnikası...">
       
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9366558760713626"
      crossorigin="anonymous"></script>

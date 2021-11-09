@@ -115,7 +115,7 @@ if($_GET["action"]=="preview"){
                     </div>
                 <?php }else { ?>
                     <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-                        <img src="../img/advert/<?php echo $itemImgElan2['img_path'] ?>" alt="<?php echo $fetchArray["elan_name"] ?>" class="w-auto h-75 center_watermark_once" >
+                        <img src="../img/advert/<?php echo $itemImgElan2['img_path'] ?>" alt="<?php echo $fetchArray["elan_name"] ?>" class="h-75 center_watermark_once" >
                     </div>
                 <?php } ?>
             </div>
