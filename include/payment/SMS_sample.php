@@ -1,4 +1,5 @@
 <?php
+include("../connectDB.php"); 
 
 $reference = rand(1000000000000000, 10000000000000000);
 $type = 'SMS';
@@ -9,18 +10,21 @@ $currency = '944';
 $biller = 'BLR0001';
 $description = 'test_payment';
 $template = 'TPL0001';
-$language = 'ru';
-$callback = 'https://localhost/elan/4d7b3627-2d63-4820-9e92-c174c41cb6cc';
+$language = 'az';
+//$callback = 'https://localhost/elan/4d7b3627-2d63-4820-9e92-c174c41cb6cc';
+$callback = 'https://satan.az/include/payment/status_sample.php?'.$reference;
 $extra = 'user_id='. 1;
-$secretKey = '52447AED0DF0306054ABF17EE9E74F53';
+$secretKey = '55542542B9318FB4A7FD6F7DD8F1A506';
 
 $signature = base64_encode(md5("$reference"."$type"."$save"."$amount"."$currency"."$biller"."$description"."$template"."$language".$callback."$secretKey", true));
 $url = "https://sandbox.api.pay.yigim.az/payment/create?reference=$reference&type=$type&save=$save&amount=$amount&currency=$currency&biller=$biller&description=$description&template=$template&language=$language&callback=$callback";
 
+mysqli_query($connect, "INSERT IGNORE INTO merchant (merchant_reference, merchant_signature) VALUES ('$reference', '$signature') ");
+
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'X-Merchant: MRC0001',
+    'X-Merchant: STN0001',
     'X-Signature: '.$signature,
     'X-Type: JSON'
 ));
@@ -39,4 +43,6 @@ if (curl_errno($ch)) {
 }					  
 curl_close($ch);
 
-echo $response->message;
+//echo $response->url."?reference=".$reference;
+
+header("Location: ".$response->url);

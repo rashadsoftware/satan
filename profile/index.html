@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="az">
+    <head>
+        <!-- Meta tags -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="Rashad Alakbarov, 0558215673">
+		<meta name="google-site-verification" content="0Or9agMpN1VESn6-jhxSJIyKkMHDFmIyQndYzJSUBR8" />
+		<meta name="description" content="Pulsuz elanlar saytı">
+		<meta name="keywords" content="pulsuz elanlar, elanlar, bedava, pulsuz, elan, elanlar, yeni elanlar, avtomobil, daşınmaz əmlak">
+		<meta http-equiv="refresh" content="1800">
+		<meta name="revisit-after" content="1 days">
+		<meta data-rh="true" id="meta-description" name="description" content="Pulsuz Elan Yerləşdir - Maşın, Mənzil, Telefon, Geyim, Məişət texnikası...">
+		
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="../assets/css/bootstrap.css" />
+		<!-- Fontawesome -->
+		<link rel="stylesheet" href="../assets/plugin/fontawesome-free-5.15.2/css/all.css" />
+		<!-- Montserrat fonts include -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<!-- main CSS -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
+
+		<!-- Title & Logo -->
+		<title>Satan.az | Giriş</title>
+		<link rel="shortcut icon" type="image/jpg" href="img/" />
+
+		<!-- Jquery JS -->
+		<script src="../assets/js/jquery-3.6.0.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="../assets/js/bootstrap.js"></script>
+    </head>
+    <body class="position-relative">
+		<div class="scrollUp">
+			<i class="fas fa-arrow-up"></i>
+		</div>
+		<header id="headerID">
+            <div class="container">
+                <div class="navbar-container">
+					<div class="menu-bars"><i class="fas fa-bars"></i></div>
+					<a href="index" class="brand">
+						<img src="img/<?php echo $company['company_logo']; ?>" alt="<?php echo $company['company_name']; ?>">
+					</a>
+					<div class="button-container">						
+						<a href="bookmark" class="heart"><i class="far fa-heart"></i></a>
+						<a href="add" class="btn btn-success ctmBorder" style="background:var(--main-color); border:1px solid var(--main-color)">
+							<i class="fas fa-plus"></i>
+							<span class="add-button mr-2">Elan yarat</span>
+						</a>
+					</div>
+				</div>
+				<div class="search-container">
+					<form class="d-flex" action="search" method="post" autocomplete="off">
+						<div class="form-group search-form">
+							<input type="text" class="form-control" placeholder="Nümunə, Samsung A7" name="search" value="<?php echo $search_text; ?>"/>
+							<i class="fas fa-search"></i>	
+						</div>						
+					</form>
+				</div>				
+            </div>
+        </header>
+		<section id="head-section" style="padding-bottom:10px">
+			<div class="container">
+				<div class="category-container">
+					<?php
+						$categorieslist=mysqli_query($connect, "SELECT *  FROM categories");
+						while($categories=mysqli_fetch_array($categorieslist)){ ?>
+							<div class="cat-item">
+								<a href="category/<?php echo $categories['category_seflink'] ?>">
+									<img src="img/categories/<?php echo $categories['category_image'] ?>" alt="">
+									<?php echo $categories['category_title'] ?>
+								</a>
+							</div>
+					<?php }
+					?>
+				</div>
+			</div>
+		</section>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="footer-content">
+						<h1><?php echo $company['company_name']; ?></h1>
+						<p>Saytın rəhbərliyi reklam bannerlərinin və yerləşdirilmiş elanların məzmununa şəklillərinə görə məsuliyyət daşımır</p>
+						<!--
+						<ul class="custom">
+							<?php
+								$configs_listr=mysqli_query($connect, "SELECT * FROM configs WHERE configs_type='social' ");
+								while($countconfigs=mysqli_fetch_array($configs_listr)){ 
+									if($countconfigs['configs_value'] != ""){ ?>
+										<li><a href="<?php  echo $countconfigs['configs_value']; ?>" target="_blank"><?php  echo $countconfigs['configs_icon']; ?></a></li>
+							<?php	}
+								}									
+							?>
+						</ul>
+						-->
+					</div>
+				</div>
+			</div>
+			<div class="footer-bottom">
+				<div class="container h-100">
+					<div class="row h-100">
+						<div class="flex-between-center">
+							<p class="mb-0 px-3 text-center">Copyright &copy; 2020-<?php echo date("Y") ?> <?php echo $company["company_name"] ?> | Bütün Hüquqlar Qorunur</p>
+							<ul class="custom">
+								<li><a href="index">Ana Səhifə</a></li>
+                                <li><a href="about">Haqqımızda</a></li>
+								<li><a href="rules">Qaydalar</a></li>
+                                <li><a href="contact">Əlaqə</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<div class="preloader">
+			<img src="img/icons/loading.gif" alt="loading">
+		</div>
+
+		<!-- Swiper JS -->
+		<script src="plugin/swiper/swiper-bundle.js"></script>
+		<!-- Isotope JS -->
+		<script src="plugin/isotope/isotope.pkgd.js"></script>
+		<!-- Fancybox JS -->
+		<script src="plugin/fancybox/jquery.fancybox.js"></script>
+		<!-- Watermark JS -->
+		<script src="plugin/watermark/jquery.watermark.js"></script>
+		<!-- OwlCarousel2-2.3.4 -->
+		<script src="plugin/OwlCarousel2-2.3.4/owl.carousel.js"></script>
+		<!-- summernote js -->
+		<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+		
+        <script src="js/main2.js"></script>
+
+		<script>
+			// jquery 
+			$(function(){
+				
+			});
+		</script> 
+    </body>
+</html>
+<?php
+    mysqli_close($connect);
+?>

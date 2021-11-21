@@ -380,6 +380,9 @@ if($_GET["action"]=="preview"){
                         textError.css("display", "none");
                         textError.text("");  
 
+                        window.location.href = '../include/payment/sms_sample.php';
+
+                        /*
                         $.ajax({
                             url: "../include/payment/payment.php",
                             type: "post",
@@ -408,6 +411,7 @@ if($_GET["action"]=="preview"){
                                 $("#btnText").css("display", "block");
                             },
                         });
+                        */
                     } else {
                         textError.css("display", "block");
                         textError.text("Elanı irəli çəkmək üçün hər hansı bir xidmət növü seçin");
@@ -419,6 +423,9 @@ if($_GET["action"]=="preview"){
                         textError.css("display", "none");
                         textError.text("");  
 
+                        window.location.href = '../include/payment/sms_sample.php';
+
+                        /*
                         $.ajax({
                             url: "../include/payment/payment.php",
                             type: "post",
@@ -447,6 +454,7 @@ if($_GET["action"]=="preview"){
                                 $("#btnText").css("display", "block");
                             },
                         });
+                        */
                     } else {
                         textError.css("display", "block");
                         textError.text("Elanı vip etmək üçün hər hansı bir xidmət növü seçin");

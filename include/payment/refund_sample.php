@@ -2,7 +2,7 @@
 
 $reference = 'REF2911821';
 $amount = '1';
-$secretKey = '52447AED0DF0306054ABF17EE9E74F53';
+$secretKey = '55542542B9318FB4A7FD6F7DD8F1A506';
 
 $signature = base64_encode(md5("$reference"."$amount"."$secretKey", true));
 $url = "https://sandbox.api.pay.yigim.az/payment/refund?reference=$reference&amount=$amount";
@@ -10,7 +10,7 @@ $url = "https://sandbox.api.pay.yigim.az/payment/refund?reference=$reference&amo
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'X-Merchant: MRC0001',
+    'X-Merchant: STN0001',
     'X-Signature: '.$signature,
     'X-Type: XML'
 ));
