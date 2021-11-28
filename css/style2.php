@@ -300,6 +300,30 @@ header{
 }
 header.active{
 	background:var(--third-color);
+	top:0
+}
+.advert-left, .advert-right{
+	position:fixed;
+	top:118px;
+	z-index:1000;
+	width:150px;
+	height:82vh
+}
+.advert-left{
+	left:0;
+}
+.advert-right{
+	right:0;
+}
+@media (max-width:1500px){
+	.advert-left, .advert-right{
+		width:130px;
+	}
+}
+@media (max-width:1400px){
+	.advert-left, .advert-right{
+		display:none
+	}
 }
 .navbar-container{
 	display:flex;

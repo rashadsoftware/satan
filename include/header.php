@@ -1,11 +1,14 @@
 <?php
     error_reporting(0);
+
 	include("include/connectDB.php"); 
 	include("include/function.php");
+	
 	$company_list=mysqli_query($connect, "SELECT *  FROM companies WHERE company_status='main' ");
 	$company=mysqli_fetch_array($company_list);
 
 	// count deadline ===================================> 
+	date_default_timezone_set("Asia/Baku");
 	$nowTime=time();  // current time
 	$arrayTimePUsh=[];
 	 
@@ -40,6 +43,36 @@
 		if($diff == $elan_forwardValue_header){
 			mysqli_query($connect,"UPDATE forward SET forward_status='passive' WHERE elanID = '$elanID_header' AND forward_key='vip' ");	
 		}		
+    }
+
+	// zaman bitibse forward elanlari forwarddan cixarma
+	$timeWeb=date('Y-m-d H:i:s', $nowTime);
+    $TimeNowHours=date("H", $nowTime);
+    $TimeNowMinute=date("i", $nowTime);
+
+	$all_forward_elan_header=mysqli_query($connect, "SELECT *  FROM forward WHERE forward_key='forward' AND forward_status='active' ");
+	while($elan_forward_header=mysqli_fetch_array($all_forward_elan_header)){
+        $elanID_Forward=$elan_forward_header["elanID"];
+        $elanID_Forward_repeat=$elan_forward_header["forward_value"];
+
+        for($g=1; $g < $elanID_Forward_repeat; $g++){
+            $elanTime_Forward=strtotime($elan_forward_header["forward_start_time"])+$g*(6*3600);
+			$NewTimeHours=date("H", $elanTime_Forward);
+            $NewTimeMinute=date("i", $elanTime_Forward);
+        
+            if(($TimeNowHours == $NewTimeHours) && ($TimeNowMinute == $NewTimeMinute)){
+                mysqli_query($connect,"UPDATE forward SET forward_time='$timeWeb' WHERE elanID = '$elanID_Forward' AND forward_key='forward' ");
+            }
+        }
+
+		$finishTimeElan=strtotime($elan_forward_header["forward_start_time"])+($elanID_Forward_repeat+1)*6*3600;
+		$NewFinishHours=date("H", $finishTimeElan);
+        $NewFinishMinute=date("i", $finishTimeElan);
+
+		if(($TimeNowHours == $NewFinishHours) && ($TimeNowMinute == $NewFinishMinute)){
+			mysqli_query($connect,"UPDATE forward SET forward_status='passive' WHERE elanID = '$elanID_Forward' AND forward_key='forward' ");
+		}
+		
     }
 ?>
 <!DOCTYPE html>
@@ -115,6 +148,15 @@
     <body class="position-relative">
 		<div class="scrollUp">
 			<i class="fas fa-arrow-up"></i>
+		</div>
+		<div class="container mb-2" style="height:100px" title="elan sahibi">
+			<a href="#"><img src="assets/img/advertisement/top.png" alt="" class="w-100 h-100"></a>			
+		</div>
+		<div class="advert-right" title="elan sahibi">
+			<a href=""><img src="assets/img/advertisement/left_right.png" alt="" class="w-100 h-100"></a>			
+		</div>
+		<div class="advert-left" title="elan sahibi">
+			<a href=""><img src="assets/img/advertisement/left_right.png" alt="" class="w-100 h-100"></a>			
 		</div>
 		<header id="headerID">
             <div class="container">

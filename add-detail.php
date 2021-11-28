@@ -384,7 +384,7 @@ if($_GET["action"]=="preview"){
 
                         /*
                         $.ajax({
-                            url: "../include/payment/payment.php",
+                            url: "../include/payment/sms_sample.php",
                             type: "post",
                             data: $(this).serialize(),
                             dataType: "json",

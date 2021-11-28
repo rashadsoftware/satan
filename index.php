@@ -71,6 +71,10 @@
 <?php   }
 ?>
 
+<div class="container my-4" style="height:100px" title="elan sahibi">
+    <a href="#"><img src="assets/img/advertisement/pasha.jpg" alt="" class="w-100 h-100"></a>			
+</div>
+
 <?php
     $all_elan_list=mysqli_query($connect, "SELECT *  FROM elan WHERE elan_status='active' ORDER BY elan_time DESC LIMIT 36");
     if(mysqli_num_rows($all_elan_list) > 0){ ?>
@@ -99,9 +103,7 @@
                     }
 
                     if(count($forwardElanArray) > 0){
-                        foreach($forwardElanArray as $elan_all){ 
-                            $timeElan=$elan_all["elan_time"];
-    
+                        foreach($forwardElanArray as $elan_all){     
                             // city create
                             $cityElan=$elan_all["elan_seher"];
                             $all_city_list=mysqli_query($connect, "SELECT *  FROM cities WHERE city_id='$cityElan' ");
@@ -131,9 +133,16 @@
                     $newElanAllElanArray=array();
 
                     // umumi olaraq elana aid butun datalari alib array-e daxil etmek
-                    while($elan_all=mysqli_fetch_array($all_elan_list)){
-                        $timeElanAll=$elan_all["elan_id"];
+                    while($elan_all10=mysqli_fetch_array($all_elan_list)){
+                        $timeElanAll=$elan_all10["elan_id"];
                         array_push($forwardAllElanArray,$timeElanAll);
+                    }
+
+                    // forward-dan verileri cekib diziye atamaq
+                    $forwardArrayItem=array();
+                    $all_forward=mysqli_query($connect, "SELECT *  FROM forward WHERE forward_key='forward' AND forward_status='active' ");
+                    while($elan_item_forward=mysqli_fetch_array($all_forward)){
+                        array_push($forwardArrayItem,$elan_item_forward["elanID"]);
                     }
 
                     // forward-daki datalarla umumi elanlardaki datalari qarsilasdirib umumi datalardan forwarddaki datalari silmek
@@ -141,10 +150,10 @@
                         unset($forwardAllElanArray[array_search($forwardArray[$g],$forwardAllElanArray,true)]);  
                     }
 
-                    $fetchAllElan=array_values($forwardAllElanArray);
+                    $fetchAllElan=array_values($forwardAllElanArray);                    
 
                     for ($m=0; $m < count($fetchAllElan); $m++) {
-                        $all_elan_other_elan=mysqli_query($connect, "SELECT *  FROM elan WHERE elan_id='$fetchAllElan[$m]' AND elan_status='active' ");
+                        $all_elan_other_elan=mysqli_query($connect, "SELECT *  FROM elan WHERE elan_id='$fetchAllElan[$m]' AND elan_status='active' ORDER BY elan_time DESC ");
                         array_push($newElanAllElanArray,mysqli_fetch_array($all_elan_other_elan));    
                     }
 
