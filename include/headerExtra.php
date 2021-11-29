@@ -162,6 +162,7 @@
 					</a>
 					<div class="button-container">						
 						<a href="../bookmark" class="heart"><i class="far fa-heart"></i></a>
+						<a href="profile/index" class="heart"><i class="fas fa-user-circle"></i></a>
 						<a href="../add" class="btn btn-success ctmBorder" style="background:var(--main-color); border:1px solid var(--main-color)">
 							<i class="fas fa-plus"></i>
 							<span class="add-button mr-2">Elan yarat</span>
