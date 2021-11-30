@@ -25,7 +25,11 @@
 	$countDeadlineHeader=count($arrayTimePUsh);
 
 	foreach($arrayTimePUsh as $idElan){
-		mysqli_query($connect,"UPDATE elan SET elan_status='deactive' WHERE elan_id = '$idElan'");
+		$itemElanTImeOut=mysqli_query($connect,"UPDATE elan SET elan_status='deactive' WHERE elan_id = '$idElan'");
+
+		if($itemElanTImeOut){
+			mysqli_query($connect,"UPDATE forward SET forward_status='passive' WHERE elanID = '$idElan'");
+		}
 	}
 
 	// zaman bitibse vip elanlari viplikden cixarma

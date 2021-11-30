@@ -1,5 +1,6 @@
 <?php
 	include("../assets/include/connectDB.php");
+	include("../assets/include/function.php");
 	$query=mysqli_query($connect,"SELECT * FROM companies WHERE company_id='1' ");
 	$data=mysqli_fetch_array($query);
 ?>
@@ -26,7 +27,7 @@
 		<!-- Montserrat fonts include -->
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<!-- main CSS -->
-		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style1.css">
 
 		<!-- Title & Logo -->
 		<title><?php echo $data['company_name'] ?> | qeydiyyat</title>
