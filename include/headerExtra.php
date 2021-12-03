@@ -137,6 +137,8 @@
 		<link rel="stylesheet" href="../plugin/summernote/summernote-lite.css"/>
 		<!-- main CSS -->
 		<link rel="stylesheet" type="text/css" media="screen" href="../css/style2.php">
+		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style4.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/responsive.css">
 
 		<!-- Title & Logo -->
 		<title><?php echo $company['company_name']; ?> | Pulsuz Elanlar Saytı</title>

@@ -27,7 +27,9 @@
 		<!-- Montserrat fonts include -->
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<!-- main CSS -->
-		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style1.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../css/style2.php">
+		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style4.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/responsive.css">
 
 		<!-- Title & Logo -->
 		<title><?php echo $data['company_name'] ?> | qeydiyyat</title>
@@ -44,4 +46,50 @@
             }
         </style>
     </head>
-    <body>
+    <body class="position-relative">
+		<div class="scrollUp">
+			<i class="fas fa-arrow-up"></i>
+		</div>
+		<header id="headerID" style="top:0px">
+            <div class="container">
+                <div class="navbar-container">
+					<div class="menu-bars"><i class="fas fa-bars"></i></div>
+					<a href="index" class="brand">
+						<img src="../img/<?php echo $data['company_logo']; ?>" alt="<?php echo $data['company_name']; ?>">
+					</a>
+					<div class="button-container">						
+						<a href="../bookmark" class="heart"><i class="far fa-heart"></i></a>
+						<a href="../profile/index" class="heart"><i class="fas fa-user-circle"></i></a>
+						<a href="../add" class="btn btn-success ctmBorder" style="background:var(--main-color); border:1px solid var(--main-color)">
+							<i class="fas fa-plus"></i>
+							<span class="add-button mr-2">Elan yarat</span>
+						</a>
+					</div>
+				</div>
+				<div class="search-container">
+					<form class="d-flex" action="search" method="post" autocomplete="off">
+						<div class="form-group search-form">
+							<input type="text" class="form-control" placeholder="Nümunə, Samsung A7" name="search" value="<?php echo $search_text; ?>"/>
+							<i class="fas fa-search"></i>	
+						</div>						
+					</form>
+				</div>				
+            </div>
+        </header>
+		<section id="head-section" style="padding-bottom:10px; padding-top:160px">
+			<div class="container">
+				<div class="category-container">
+					<?php
+						$categorieslist=mysqli_query($connect, "SELECT *  FROM categories");
+						while($categories=mysqli_fetch_array($categorieslist)){ ?>
+							<div class="cat-item">
+								<a href="../category/<?php echo $categories['category_seflink'] ?>">
+									<img src="../img/categories/<?php echo $categories['category_image'] ?>" alt="">
+									<?php echo $categories['category_title'] ?>
+								</a>
+							</div>
+					<?php }
+					?>
+				</div>
+			</div>
+		</section>

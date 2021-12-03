@@ -52,9 +52,9 @@
     // var_dump($active_array[0]['elan_seher']);
 ?>
 
-<div class="container mt-5">
+<div class="container mt-3" style="margin-bottom:300px">
     <div class="d-flex align-items-center justify-content-between mb-5 text-muted" style="font-size:18px">
-        <span>İstifadəçi Kabineti</span>  
+        <span class="text-dark font-weight-bold">İstifadəçi Kabineti</span>  
         <a href="logout" class="text-muted" style="font-size:18px"><i class="fas fa-sign-out-alt"></i></a>
     </div>   
 	<div class="row">
