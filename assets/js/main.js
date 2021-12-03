@@ -13,6 +13,6 @@ $(function () {
 
 	// close alert with setTimeout
 	setTimeout(() => {
-		$("#alert_hide").fadeOut();
+		$(".alert_hide").fadeOut();
 	}, 3000);
 });

@@ -12,7 +12,7 @@
         <div class="card" style="width:400px">
             <div class="card-body">
                 <img src="../img/<?php echo $data['company_logo'] ?>" alt="" style="width:50%; margin:1px auto 25px; display:block">
-                <div class="alert alert-danger register-text" id="alert_hide"></div>
+                <div class="alert alert-danger register-text alert_hide"></div>
                 <form class="mb-3 register-form" autocomplete="off">
                     <div class="form-group">
                         <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email ünvanınızı daxil edin" name="email">

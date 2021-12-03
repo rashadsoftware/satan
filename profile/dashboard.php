@@ -9,7 +9,12 @@
     include_once 'include/header.php';
 
     $session_email=$_SESSION["ProfilEmail"];
+	
+	// fetch data
+	$query=mysqli_query($connect,"SELECT * FROM users WHERE user_email='$session_email' AND user_status='user' ");
+	$user_data=mysqli_fetch_array($query);
 
+	// fetch all elanlar
     $active_array=array();
     $deactive_array=array();
     $waiting_array=array();
@@ -51,7 +56,14 @@
     <div class="d-flex align-items-center justify-content-between mb-5 text-muted" style="font-size:18px">
         <span>İstifadəçi Kabineti</span>  
         <a href="logout" class="text-muted" style="font-size:18px"><i class="fas fa-sign-out-alt"></i></a>
-    </div>     
+    </div>   
+	<div class="row">
+		<div class="col-12">
+			<?php
+				dynamic_alert_notification("alertDashboard");
+			?>
+		</div>
+	</div>	
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Elanlar</a>
@@ -224,7 +236,65 @@
                 </div>
             </div>
         </div>
-        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">Parametr</div>
+        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <div id="accordion">
+                <div class="card">
+                    <div class="card-header" id="headingOne" style="padding:0.5rem 1rem">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Əlaqə Vasitələri
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            <form id="password-optional" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="username">İstifadəçi adı</label>
+                                    <input type="text" class="form-control" id="username" placeholder="İstifadəçi adınızı daxil edin" name="username" value="<?php echo $user_data["user_name"] ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="E-poçt ünvanınızı daxil edin" name="email" value="<?php echo $user_data["user_email"] ?>">
+                                </div>
+								<input type="hidden" name="inputHiddenID" value="<?php echo $user_data["user_id"] ?>">
+                                <button type="submit" class="btn btn-primary">Məlumatları Yenilə</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo" style="padding:0.5rem 1rem">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Şifrəni Dəyişmək
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                        <div class="card-body">
+                            <form id="password-change" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="current_password">Cari şifrə</label>
+                                    <input type="password" class="form-control" id="current_password" placeholder="Password" name="current_password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="new_password">Yeni şifrə</label>
+                                    <input type="password" class="form-control" id="new_password" placeholder="Password" name="new_password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm_password">Təkrar şifrə</label>
+                                    <input type="password" class="form-control" id="confirm_password" placeholder="Password" name="confirm_password">
+                                </div>
+								<input type="hidden" name="inputHiddenID" value="<?php echo $user_data["user_id"] ?>">
+                                <button type="submit" class="btn btn-primary">Şifrəni Dəyiş</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -25,6 +25,39 @@
         $text = preg_replace("/-$/","",$text);
         return $text;
     }
+	
+	// Create Dynamic Alert Notification
+    function dynamic_alert_notification($id){
+        echo '<div class="alert alert-danger alert_hide" role="alert" style="display:none" id="'.$id.'"></div>';
+    }
+	
+	// Control Name / Surname / Title
+    function controlTitle($valueTitle, $nameTitle, $count){
+        if(empty($valueTitle)){
+			$data["text"]=$nameTitle." boş qalmamalıdır";
+			
+			echo json_encode($data);
+		} else {
+            if(strlen($valueTitle) > $count){
+                return true;
+                /*
+                // only enter aphabetical letters
+				if(preg_replace("/[A-ZƏəIıÖöĞğÇçŞşüÜİi а-яА-Яa-z]/", "",$valueTitle)==true){
+					$data["text"]=$nameTitle." ancaq hərflərdən ibarət olmalıdır";
+
+					echo json_encode($data);
+				} else {
+                    return true;
+                }
+                */
+            } else {
+                $summary=$count+1;
+                $data["text"]=$nameTitle." minimum ".$summary." karakter olmalıdır";
+						
+				echo json_encode($data);
+            }
+        }
+    }
 
     // Control Email
     function controlEmail($valueEmail, $nameEmail){

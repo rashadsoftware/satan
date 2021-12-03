@@ -13,7 +13,7 @@
 }
 
 /* alert display */
-#alert_hide {
+.alert_hide {
 	display: none;
 }
 

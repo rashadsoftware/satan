@@ -337,7 +337,7 @@ if($_GET["action"]=="preview"){
       <div class="modal-body">
         <p id="textAdd"></p>
 
-        <form id="formPayment">            
+        <form id="formPayment" method="POST" action="../include/payment/sms_sample.php">            
             <h6>Xidmət Növü</h6>            
             <div id="priceAdvert"></div>
             <h6 class="mt-4">Ödəniş Üsulu</h6>
@@ -361,6 +361,7 @@ if($_GET["action"]=="preview"){
 
 <script>
     $(function(){
+        /*
         $("#formPayment").submit(function(e){
             e.preventDefault();
 
@@ -380,9 +381,8 @@ if($_GET["action"]=="preview"){
                         textError.css("display", "none");
                         textError.text("");  
 
-                        window.location.href = '../include/payment/sms_sample.php';
+                        //window.location.href = '../include/payment/sms_sample.php';
 
-                        /*
                         $.ajax({
                             url: "../include/payment/sms_sample.php",
                             type: "post",
@@ -411,7 +411,6 @@ if($_GET["action"]=="preview"){
                                 $("#btnText").css("display", "block");
                             },
                         });
-                        */
                     } else {
                         textError.css("display", "block");
                         textError.text("Elanı irəli çəkmək üçün hər hansı bir xidmət növü seçin");
@@ -423,9 +422,8 @@ if($_GET["action"]=="preview"){
                         textError.css("display", "none");
                         textError.text("");  
 
-                        window.location.href = '../include/payment/sms_sample.php';
+                        //window.location.href = '../include/payment/sms_sample.php';
 
-                        /*
                         $.ajax({
                             url: "../include/payment/payment.php",
                             type: "post",
@@ -454,7 +452,6 @@ if($_GET["action"]=="preview"){
                                 $("#btnText").css("display", "block");
                             },
                         });
-                        */
                     } else {
                         textError.css("display", "block");
                         textError.text("Elanı vip etmək üçün hər hansı bir xidmət növü seçin");
@@ -466,6 +463,7 @@ if($_GET["action"]=="preview"){
             }
             
         });
+        */
     })
 </script>
 

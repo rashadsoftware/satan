@@ -13,7 +13,7 @@
 			<div class="card" style="width:400px">
 				<div class="card-body">
 					<img src="../img/<?php echo $data['company_logo'] ?>" alt="" style="width:50%; margin:1px auto 25px; display:block">
-					<div class="alert alert-danger login-text" id="alert_hide"></div>
+					<div class="alert alert-danger login-text alert_hide"></div>
 					<p class="text-center" style="color:#a6abb4; font-size:17px">Öz elanlarınıza baxmağın, onları redaktə və bərpa etməyin rahat yolu</p>
 					<form class="mb-3 login-form" autocomplete="off">
 						<div class="form-group">

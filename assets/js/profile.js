@@ -38,4 +38,62 @@ $(function () {
 			},
 		});
 	});
+	
+	// Password Optional Form
+	$("#password-optional").on("submit", function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: "php/settings-optional.php",
+			type: "post",
+			data: $(this).serialize(),
+			dataType: "json",
+			success: function (data) {
+				if (data.ok) {
+					$("#alertDashboard").removeClass("alert-danger");
+					$("#alertDashboard").addClass("alert-success");
+					setTimeout(function () {
+						location.reload();
+					}, 2000);
+				} else if (data.logout) {
+					window.location.assign("index");
+				} else {
+					$("#alertDashboard").removeClass("alert-success");
+					$("#alertDashboard").addClass("alert-danger");
+				}
+
+				$("#alertDashboard").css("display", "block");
+				$("#alertDashboard").html(data.text);
+			},
+		});
+	});
+	
+	// Password Change Form
+	$("#password-change").on("submit", function (e) {
+		e.preventDefault();
+
+		$.ajax({
+			url: "php/settings-password.php",
+			type: "post",
+			data: $(this).serialize(),
+			dataType: "json",
+			success: function (data) {
+				if (data.ok) {
+					$("#alertDashboard").removeClass("alert-danger");
+					$("#alertDashboard").addClass("alert-success");
+					setTimeout(function () {
+						location.reload();
+					}, 2000);
+				} else if (data.logout) {
+					window.location.assign("index");
+				} else {
+					$("#alertDashboard").removeClass("alert-success");
+					$("#alertDashboard").addClass("alert-danger");
+				}
+
+				$("#alertDashboard").css("display", "block");
+				$("#alertDashboard").html(data.text);
+			},
+		});
+	});
 });
