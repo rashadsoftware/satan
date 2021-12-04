@@ -4,7 +4,6 @@
 					<div class="footer-content">
 						<h1><?php echo $company['company_name']; ?></h1>
 						<p>Saytın rəhbərliyi reklam bannerlərinin və yerləşdirilmiş elanların məzmununa şəklillərinə görə məsuliyyət daşımır</p>
-						<!--
 						<ul class="custom">
 							<?php
 								$configs_listr=mysqli_query($connect, "SELECT * FROM configs WHERE configs_type='social' ");
@@ -15,7 +14,6 @@
 								}									
 							?>
 						</ul>
-						-->
 					</div>
 				</div>
 			</div>

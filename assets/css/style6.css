@@ -116,6 +116,22 @@ button.close:focus {
 ul.custom li:last-child {
 	margin-right: 0;
 }
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link,
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link,
+.site-button {
+	background-color: var(--main-color);
+	color: white;
+}
+.site-button {
+	border: 1px solid var(--main-color);
+}
+.nav-tabs .nav-link,
+.nav-pills .nav-link,
+.btn-link {
+	color: var(--main-color);
+}
 /* password eye icon */
 .icon-eye {
 	position: absolute;
@@ -246,7 +262,8 @@ ul.custom li:last-child {
 /* [ITEM section] 
 =======================================================> */
 /* item */
-.item-container {
+.item-container,
+.item-bottom-content {
 	width: 100%;
 	height: 242px;
 	border: 1px solid #ccc;
@@ -255,14 +272,15 @@ ul.custom li:last-child {
 	-moz-border-radius: 7px;
 	-ms-border-radius: 7px;
 	-o-border-radius: 7px;
-	margin-bottom: 14px;
+	margin-bottom: 60px;
 	transition: 0.5s;
 	-webkit-transition: 0.5s;
 	-moz-transition: 0.5s;
 	-ms-transition: 0.5s;
 	-o-transition: 0.5s;
 }
-.item-container:hover {
+.item-container:hover,
+.item-bottom-content:hover {
 	box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
 }
 .item-container a {
@@ -332,7 +350,8 @@ ul.custom li:last-child {
 .item-love img {
 	width: 100%;
 }
-.item-content {
+.item-content,
+.item-bottom-content {
 	width: 100%;
 	height: 89px;
 	position: relative;
@@ -340,6 +359,13 @@ ul.custom li:last-child {
 	padding: 10px;
 	border-top: 1px solid #eee;
 	border-radius: 7px;
+}
+.item-bottom-content {
+	height: 40px;
+	margin-top: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 .item-content h2 {
 	font-size: 16px;

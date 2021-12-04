@@ -1,4 +1,16 @@
 <?php
+    // Create Dynamic Title tags
+    function dynamic_title($title){
+        $output= ob_get_contents();
+        if(ob_get_length() > 0){
+            ob_end_clean();
+        }
+        $patterns=array("/<title>(.*?)<\/title>/");
+        $replacements=array("<title>$title</title>");
+        $output=preg_replace($patterns, $replacements, $output);
+        echo $output;
+    }
+
     // data crypted / decrypted
     define('CIPHER', 'AES-128-CBC');
     define('KEY', 'qasimov');
@@ -145,5 +157,19 @@ echo'   <div class="col-6 col-lg-4 col-xl-3">
             echo'    </div>
             </div>
         </div>';
+    }
+
+    // create laravel code
+    $list_yield=array();
+    function part_title($title){
+        return array_push($list_yield, $title);
+    }
+
+    function header_title($title_part, $section){
+        array_map(function($title){
+            if($title == $title_part){
+                echo $section;
+            }
+        }, $list_yield);
     }
 ?>

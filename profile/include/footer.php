@@ -37,7 +37,25 @@
 		</footer>
 
         <!-- Bootstrap JS -->
-        <script src="../assets/js/main.js"></script>
-        <script src="../assets/js/profile.js"></script>	
+        <script src="../assets/js/main2.js"></script>
+        <script src="../assets/js/profile2.js"></script>	
+
+		<script>
+			$(function(){
+				// header area
+				var headerHeight = $("header").height();
+				$("#head-section").css("padding-top", headerHeight);
+
+				$(window).scroll(function () {
+					if ($(this).scrollTop() > 0) {
+						$("header").addClass("active");
+						$(".scrollUp").fadeIn();
+					} else {
+						$("header").removeClass("active");
+						$(".scrollUp").fadeOut();
+					}
+				});
+			});
+		</script>
     </body>
 </html>

@@ -28,11 +28,11 @@
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		<!-- main CSS -->
 		<link rel="stylesheet" type="text/css" media="screen" href="../css/style2.php">
-		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style4.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/style6.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="../assets/css/responsive.css">
 
 		<!-- Title & Logo -->
-		<title><?php echo $data['company_name'] ?> | qeydiyyat</title>
+		<title><?php echo $data['company_name'] ?> | <?php part_title('header') ?></title>
 		<link rel="shortcut icon" type="image/jpg" href="../img/<?php echo $data['company_favicon'] ?>" />
 
 		<!-- Jquery JS -->
@@ -54,7 +54,7 @@
             <div class="container">
                 <div class="navbar-container">
 					<div class="menu-bars"><i class="fas fa-bars"></i></div>
-					<a href="index" class="brand">
+					<a href="../index" class="brand">
 						<img src="../img/<?php echo $data['company_logo']; ?>" alt="<?php echo $data['company_name']; ?>">
 					</a>
 					<div class="button-container">						

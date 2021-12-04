@@ -6,10 +6,12 @@
 		header("Location:dashboard");
 	}
 
-	include_once 'include/header.php'
+	include('include/header.php');
+
+	header_title("header", "Giriş");
 ?>
     <body>
-		<div class="d-flex align-items-center justify-content-center w-100" style="height:100vh; background:#f1f3f7">
+		<div class="d-flex align-items-center justify-content-center w-100" style="height:70vh">
 			<div class="card" style="width:400px">
 				<div class="card-body">
 					<img src="../img/<?php echo $data['company_logo'] ?>" alt="" style="width:50%; margin:1px auto 25px; display:block">

@@ -49,13 +49,13 @@
         } 
     }   
 
-    // var_dump($active_array[0]['elan_seher']);
+    header_title("header", "İstifadəçi Profili");
 ?>
 
 <div class="container mt-3" style="margin-bottom:300px">
     <div class="d-flex align-items-center justify-content-between mb-5 text-muted" style="font-size:18px">
         <span class="text-dark font-weight-bold">İstifadəçi Kabineti</span>  
-        <a href="logout" class="text-muted" style="font-size:18px"><i class="fas fa-sign-out-alt"></i></a>
+        <a href="logout" class="text-muted" style="font-size:24px"><i class="fas fa-power-off"></i></a>
     </div>   
 	<div class="row">
 		<div class="col-12">
@@ -117,7 +117,48 @@
                                       $raiting_list=mysqli_query($connect, "SELECT *  FROM forward WHERE elanID='$idElan' AND forward_status='active' ");
                                       $raiting=mysqli_fetch_array($raiting_list);
 
-                                      addItem($prem_img['img_path'], $active_array[$ac]['elan_qiymet'], $active_array[$ac]['elan_id'], $active_array[$ac]['elan_name'], $city_all["city_title"], $timeElan, $raiting['forward_key'], $favorites);
+                                      echo'   <div class="col-6 col-lg-4 col-xl-3">
+                                                <div class="item-container">
+                                                    <div class="item-image"> ';
+                                                echo'   <a href="preview/'.seflink($mezmun).'-'.$idElan.'" target="_blank">
+                                                            <img src="../img/advert/'.$prem_img['img_path'].'" alt="'.seflink($mezmun).'"/>
+                                                        </a>';
+                                                        if($price != ""){
+                                                            echo '<span class="price">'.str_replace(",", " ", number_format($active_array[$ac]['elan_qiymet'])).' AZN</span>';
+                                                        }
+                                                        
+                                                echo'   <ul class="item-status">';
+                                                                if($raiting['forward_key'] == "premium"){ 
+                                                        echo'       <li><i class="far fa-gem"></i></li> ';
+                                                                    }
+                                                                if($raiting['forward_key'] == "vip"){ 
+                                                        echo'       <li style="line-height:24px"><i class="fas fa-crown"></i></li>';
+                                                                }
+                                                echo'   </ul>
+                                                        <span class="item-love">';
+                                                        if($favorites > 0){
+                                                            echo '<img src="../img/icons/heart_full.png" alt="heart" class="heart" id="'.$active_array[$ac]['elan_id'].'">';
+                                                        } else {
+                                                            echo '<img src="../img/icons/heart_empty.png" alt="heart" class="heart" id="'.$active_array[$ac]['elan_id'].'">';
+                                                        }
+                                                echo'    </span>
+                                                    </div>
+                                                    <div class="item-content">
+                                                        <h2>
+                                                                <a href="preview/'.seflink($active_array[$ac]['elan_name']).'-'.$active_array[$ac]['elan_id'].'" target="_blank">'.substr($active_array[$ac]['elan_name'], 0, 28).'...</a>
+                                                        </h2> ';
+                                                        if($city_all["city_title"] == ""){
+                                                            echo'   <p>'.$timeElan.'</p>';
+                                                        } else {
+                                                            echo'   <p>'.$city_all["city_title"].', '.$timeElan.'</p>';
+                                                        }
+                                            echo'    </div>
+                                                    <div class="item-bottom-content">
+                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
+                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Sil</a>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                   }
                               } else {
                                   echo '<div class="alert alert-info mt-5 mx-auto">Bu bölmədə elan yoxdur</div>';
@@ -259,7 +300,7 @@
                                     <input type="email" class="form-control" id="email" placeholder="E-poçt ünvanınızı daxil edin" name="email" value="<?php echo $user_data["user_email"] ?>">
                                 </div>
 								<input type="hidden" name="inputHiddenID" value="<?php echo $user_data["user_id"] ?>">
-                                <button type="submit" class="btn btn-primary">Məlumatları Yenilə</button>
+                                <button type="submit" class="btn btn-primary site-button">Məlumatları Yenilə</button>
                             </form>
                         </div>
                     </div>
@@ -288,7 +329,7 @@
                                     <input type="password" class="form-control" id="confirm_password" placeholder="Password" name="confirm_password">
                                 </div>
 								<input type="hidden" name="inputHiddenID" value="<?php echo $user_data["user_id"] ?>">
-                                <button type="submit" class="btn btn-primary">Şifrəni Dəyiş</button>
+                                <button type="submit" class="btn btn-primary site-button">Şifrəni Dəyiş</button>
                             </form>
                         </div>
                     </div>

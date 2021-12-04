@@ -139,7 +139,7 @@
 		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 		<!-- main CSS -->
 		<link rel="stylesheet" type="text/css" media="screen" href="css/style2.php">
-		<link rel="stylesheet" type="text/css" media="screen" href="assets/css/style4.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="assets/css/style6.css">
 		<link rel="stylesheet" type="text/css" media="screen" href="assets/css/responsive.css">
 
 		<!-- Title & Logo -->
