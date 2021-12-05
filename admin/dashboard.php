@@ -62,7 +62,7 @@
 						<div class="row">
 							<div class="col-12 col-sm-6 col-md-3">
 								<div class="info-box mb-3">
-									<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users text-white"></i></span>
+									<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-glasses text-white"></i></span>
 
 									<div class="info-box-content">
 										<span class="info-box-text text-capitalize">Ziyarətçi sayı</span>
@@ -99,6 +99,23 @@
 								</div>
 								<!-- /.info-box -->
 							</div>
+
+							<div class="col-12 col-sm-6 col-md-3">
+								<div class="info-box mb-3">
+									<span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users text-white"></i></span>
+
+									<div class="info-box-content">
+										<span class="info-box-text text-capitalize">İstifadəçi sayı</span>
+										<?php
+											$users_list=mysqli_query($connect, "SELECT *  FROM users WHERE user_status='user' ");
+										?>
+										<span class="info-box-number"><?php echo mysqli_num_rows($users_list); ?></span>
+									</div>
+									<!-- /.info-box-content -->
+								</div>
+								<!-- /.info-box -->
+							</div>
+							<!-- /.col -->
 						</div>
 						<div class="row">
 							<div class="col-lg-3 col-6">

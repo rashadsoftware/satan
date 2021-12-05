@@ -126,6 +126,8 @@
                                                                             <?php
                                                                                 if($elan["elan_status"]=="active"){ ?>
                                                                                     <td class="text-center text-success">Aktivdir</td>
+                                                                            <?php   } else if($elan["elan_status"]=="blocked"){ ?>
+                                                                                    <td class="text-center text-info">İmtina edilmişdir</td>
                                                                             <?php   } else if($elan["elan_status"]=="deactive"){ ?>
                                                                                     <td class="text-center text-danger">Müddəti bitmişdir</td>
                                                                             <?php   } else { ?>

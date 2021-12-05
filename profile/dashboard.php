@@ -63,13 +63,6 @@
 				dynamic_alert_notification("alertDashboard");
 			?>
 		</div>
-        <div class="col-12">
-			<?php
-				if(!isset($_SESSION["success_alert"])){ ?>
-                    <div class="alert alert-danger alert_hide" role="alert"><?php echo $_SESSION["text"] ?></div>
-            <?php    }
-			?>
-		</div>
 	</div>	
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">

@@ -53,8 +53,6 @@
     // remove elanlar
     $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");    
     if($allElan){
-        $_SESSION["success_alert"]=$inputEmail;
-        $_SESSION["text"]="Sizin elan başarılı şəkildə silindi";
         header('Location: ../dashboard');
     }
 
