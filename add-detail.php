@@ -160,7 +160,17 @@ if($_GET["action"]=="preview"){
                 <div class="person-container">
                     <div class="person-content">
                         <h5><?php echo $fetchArrayCustomer["customer_name"] ?> <span>(<?php if($fetchArray["elan_veren"]== "own" ){ echo "Şəxsi"; }else{ echo "Şirkət"; } ?>)</span></h5>								
-                        <p><?php echo $fetchArrayCustomer["customer_phone"] ?></p>
+                        <p>
+                            <?php 
+                                $fetchPhone=$fetchArrayCustomer["customer_phone"]; 
+                                $prefix = substr($fetchPhone, 1, 2);
+                                $suffix3 = substr($fetchPhone, 3, 3);
+                                $suffix2 = substr($fetchPhone, 6, 2);
+                                $suffix = substr($fetchPhone, 8, 2);
+                            
+                                echo "(0{$prefix}) {$suffix3}-{$suffix2}-{$suffix}"; 
+                            ?>
+                        </p>
                         <?php
                             $customer_email=$fetchArrayCustomer["customer_email"];
                             $customer_email_list=mysqli_query($connect,"SELECT * FROM customers WHERE customer_email='$customer_email'");
