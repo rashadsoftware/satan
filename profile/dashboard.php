@@ -63,6 +63,13 @@
 				dynamic_alert_notification("alertDashboard");
 			?>
 		</div>
+        <div class="col-12">
+			<?php
+				if(!isset($_SESSION["success_alert"])){ ?>
+                    <div class="alert alert-danger alert_hide" role="alert"><?php echo $_SESSION["text"] ?></div>
+            <?php    }
+			?>
+		</div>
 	</div>	
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -120,7 +127,7 @@
                                       echo'   <div class="col-6 col-lg-4 col-xl-3">
                                                 <div class="item-container">
                                                     <div class="item-image"> ';
-                                                echo'   <a href="preview/'.seflink($mezmun).'-'.$idElan.'" target="_blank">
+                                                echo'   <a href="../preview/'.seflink($mezmun).'-'.$idElan.'" target="_blank">
                                                             <img src="../img/advert/'.$prem_img['img_path'].'" alt="'.seflink($mezmun).'"/>
                                                         </a>';
                                                         if($price != ""){
@@ -145,7 +152,7 @@
                                                     </div>
                                                     <div class="item-content">
                                                         <h2>
-                                                                <a href="preview/'.seflink($active_array[$ac]['elan_name']).'-'.$active_array[$ac]['elan_id'].'" target="_blank">'.substr($active_array[$ac]['elan_name'], 0, 28).'...</a>
+                                                                <a href="../preview/'.seflink($active_array[$ac]['elan_name']).'-'.$active_array[$ac]['elan_id'].'" target="_blank">'.substr($active_array[$ac]['elan_name'], 0, 28).'...</a>
                                                         </h2> ';
                                                         if($city_all["city_title"] == ""){
                                                             echo'   <p>'.$timeElan.'</p>';
@@ -155,7 +162,7 @@
                                             echo'    </div>
                                                     <div class="item-bottom-content">
                                                         <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
-                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Sil</a>
+                                                        <a href="php/delete-elanlar?id='.$active_array[$ac]['elan_id'].'" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Elanı sil</a>
                                                     </div>
                                                 </div>
                                             </div>';
@@ -194,7 +201,47 @@
                                       $raiting_list=mysqli_query($connect, "SELECT *  FROM forward WHERE elanID='$idElan' AND forward_status='active' ");
                                       $raiting=mysqli_fetch_array($raiting_list);
 
-                                      addItem($prem_img['img_path'], $waiting_array[$ac]['elan_qiymet'], $waiting_array[$ac]['elan_id'], $waiting_array[$ac]['elan_name'], $city_all["city_title"], $timeElan, $raiting['forward_key'], $favorites);
+                                      echo'   <div class="col-6 col-lg-4 col-xl-3">
+                                                <div class="item-container">
+                                                    <div class="item-image"> ';
+                                                echo'   <a href="../preview/'.seflink($mezmun).'-'.$idElan.'" target="_blank">
+                                                            <img src="../img/advert/'.$prem_img['img_path'].'" alt="'.seflink($mezmun).'"/>
+                                                        </a>';
+                                                        if($price != ""){
+                                                            echo '<span class="price">'.str_replace(",", " ", number_format($waiting_array[$ac]['elan_qiymet'])).' AZN</span>';
+                                                        }
+                                                        
+                                                echo'   <ul class="item-status">';
+                                                                if($raiting['forward_key'] == "premium"){ 
+                                                        echo'       <li><i class="far fa-gem"></i></li> ';
+                                                                    }
+                                                                if($raiting['forward_key'] == "vip"){ 
+                                                        echo'       <li style="line-height:24px"><i class="fas fa-crown"></i></li>';
+                                                                }
+                                                echo'   </ul>
+                                                        <span class="item-love">';
+                                                        if($favorites > 0){
+                                                            echo '<img src="../img/icons/heart_full.png" alt="heart" class="heart" id="'.$waiting_array[$ac]['elan_id'].'">';
+                                                        } else {
+                                                            echo '<img src="../img/icons/heart_empty.png" alt="heart" class="heart" id="'.$waiting_array[$ac]['elan_id'].'">';
+                                                        }
+                                                echo'    </span>
+                                                    </div>
+                                                    <div class="item-content">
+                                                        <h2>
+                                                                <a href="../preview/'.seflink($waiting_array[$ac]['elan_name']).'-'.$waiting_array[$ac]['elan_id'].'" target="_blank">'.substr($waiting_array[$ac]['elan_name'], 0, 28).'...</a>
+                                                        </h2> ';
+                                                        if($city_all["city_title"] == ""){
+                                                            echo'   <p>'.$timeElan.'</p>';
+                                                        } else {
+                                                            echo'   <p>'.$city_all["city_title"].', '.$timeElan.'</p>';
+                                                        }
+                                            echo'    </div>
+                                                    <div class="item-bottom-content">
+                                                        <p class="mb-0" style="color:var(--main-color)">Elan təsdiqlənmə rejimindədir</p>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                   }
                               } else {
                                   echo '<div class="alert alert-info mt-5 mx-auto">Bu bölmədə elan yoxdur</div>';
@@ -230,7 +277,48 @@
                                       $raiting_list=mysqli_query($connect, "SELECT *  FROM forward WHERE elanID='$idElan' AND forward_status='active' ");
                                       $raiting=mysqli_fetch_array($raiting_list);
 
-                                      addItem($prem_img['img_path'], $deactive_array[$ac]['elan_qiymet'], $deactive_array[$ac]['elan_id'], $deactive_array[$ac]['elan_name'], $city_all["city_title"], $timeElan, $raiting['forward_key'], $favorites);
+                                      echo'   <div class="col-6 col-lg-4 col-xl-3">
+                                                <div class="item-container">
+                                                    <div class="item-image"> ';
+                                                echo'   <a href="../preview/'.seflink($mezmun).'-'.$idElan.'" target="_blank">
+                                                            <img src="../img/advert/'.$prem_img['img_path'].'" alt="'.seflink($mezmun).'"/>
+                                                        </a>';
+                                                        if($price != ""){
+                                                            echo '<span class="price">'.str_replace(",", " ", number_format($deactive_array[$ac]['elan_qiymet'])).' AZN</span>';
+                                                        }
+                                                        
+                                                echo'   <ul class="item-status">';
+                                                                if($raiting['forward_key'] == "premium"){ 
+                                                        echo'       <li><i class="far fa-gem"></i></li> ';
+                                                                    }
+                                                                if($raiting['forward_key'] == "vip"){ 
+                                                        echo'       <li style="line-height:24px"><i class="fas fa-crown"></i></li>';
+                                                                }
+                                                echo'   </ul>
+                                                        <span class="item-love">';
+                                                        if($favorites > 0){
+                                                            echo '<img src="../img/icons/heart_full.png" alt="heart" class="heart" id="'.$deactive_array[$ac]['elan_id'].'">';
+                                                        } else {
+                                                            echo '<img src="../img/icons/heart_empty.png" alt="heart" class="heart" id="'.$deactive_array[$ac]['elan_id'].'">';
+                                                        }
+                                                echo'    </span>
+                                                    </div>
+                                                    <div class="item-content">
+                                                        <h2>
+                                                                <a href="../preview/'.seflink($deactive_array[$ac]['elan_name']).'-'.$deactive_array[$ac]['elan_id'].'" target="_blank">'.substr($deactive_array[$ac]['elan_name'], 0, 28).'...</a>
+                                                        </h2> ';
+                                                        if($city_all["city_title"] == ""){
+                                                            echo'   <p>'.$timeElan.'</p>';
+                                                        } else {
+                                                            echo'   <p>'.$city_all["city_title"].', '.$timeElan.'</p>';
+                                                        }
+                                            echo'    </div>
+                                                    <div class="item-bottom-content">
+                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
+                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Sil</a>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                   }
                               } else {
                                   echo '<div class="alert alert-info mt-5 mx-auto">Bu bölmədə elan yoxdur</div>';
@@ -266,7 +354,48 @@
                                     $raiting_list=mysqli_query($connect, "SELECT *  FROM forward WHERE elanID='$idElan' AND forward_status='active' ");
                                     $raiting=mysqli_fetch_array($raiting_list);
 
-                                    addItem($prem_img['img_path'], $blocked_array[$ac]['elan_qiymet'], $blocked_array[$ac]['elan_id'], $blocked_array[$ac]['elan_name'], $city_all["city_title"], $timeElan, $raiting['forward_key'], $favorites);
+                                    echo'   <div class="col-6 col-lg-4 col-xl-3">
+                                                <div class="item-container">
+                                                    <div class="item-image"> ';
+                                                echo'   <a href="../preview/'.seflink($mezmun).'-'.$idElan.'" target="_blank">
+                                                            <img src="../img/advert/'.$prem_img['img_path'].'" alt="'.seflink($mezmun).'"/>
+                                                        </a>';
+                                                        if($price != ""){
+                                                            echo '<span class="price">'.str_replace(",", " ", number_format($blocked_array[$ac]['elan_qiymet'])).' AZN</span>';
+                                                        }
+                                                        
+                                                echo'   <ul class="item-status">';
+                                                                if($raiting['forward_key'] == "premium"){ 
+                                                        echo'       <li><i class="far fa-gem"></i></li> ';
+                                                                    }
+                                                                if($raiting['forward_key'] == "vip"){ 
+                                                        echo'       <li style="line-height:24px"><i class="fas fa-crown"></i></li>';
+                                                                }
+                                                echo'   </ul>
+                                                        <span class="item-love">';
+                                                        if($favorites > 0){
+                                                            echo '<img src="../img/icons/heart_full.png" alt="heart" class="heart" id="'.$blocked_array[$ac]['elan_id'].'">';
+                                                        } else {
+                                                            echo '<img src="../img/icons/heart_empty.png" alt="heart" class="heart" id="'.$blocked_array[$ac]['elan_id'].'">';
+                                                        }
+                                                echo'    </span>
+                                                    </div>
+                                                    <div class="item-content">
+                                                        <h2>
+                                                                <a href="../preview/'.seflink($blocked_array[$ac]['elan_name']).'-'.$blocked_array[$ac]['elan_id'].'" target="_blank">'.substr($blocked_array[$ac]['elan_name'], 0, 28).'...</a>
+                                                        </h2> ';
+                                                        if($city_all["city_title"] == ""){
+                                                            echo'   <p>'.$timeElan.'</p>';
+                                                        } else {
+                                                            echo'   <p>'.$city_all["city_title"].', '.$timeElan.'</p>';
+                                                        }
+                                            echo'    </div>
+                                                    <div class="item-bottom-content">
+                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
+                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Sil</a>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                 }
                             } else {
                                 echo '<div class="alert alert-info mt-5 mx-auto">Bu bölmədə elan yoxdur</div>';

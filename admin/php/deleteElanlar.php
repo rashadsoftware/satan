@@ -42,6 +42,19 @@
                                         $allDeadlinesElan=mysqli_query($connect, "DELETE FROM deadline WHERE elan_id='$postId'");
     
                                         if($allDeadlinesElan){
+
+                                            // forward
+                                            $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                            if(mysqli_num_rows($allForwardsElan) > 0){
+                                                mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                            }
+
+                                            // payment
+                                            $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                            if(mysqli_num_rows($allPaymentElan) > 0){
+                                                mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                            }
+
                                             $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
     
                                             if($allElan){
@@ -61,6 +74,18 @@
                                             echo json_encode($data);
                                         }
                                     } else {
+                                        // forward
+                                        $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                        if(mysqli_num_rows($allForwardsElan) > 0){
+                                            mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                        }
+
+                                        // payment
+                                        $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                        if(mysqli_num_rows($allPaymentElan) > 0){
+                                            mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                        }
+
                                         $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
     
                                         if($allElan){
@@ -86,6 +111,18 @@
                                     $allDeadlinesElan=mysqli_query($connect, "DELETE FROM deadline WHERE elan_id='$postId'");
 
                                     if($allDeadlinesElan){
+                                        // forward
+                                        $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                        if(mysqli_num_rows($allForwardsElan) > 0){
+                                            mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                        }
+
+                                        // payment
+                                        $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                        if(mysqli_num_rows($allPaymentElan) > 0){
+                                            mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                        }
+
                                         $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
 
                                         if($allElan){
@@ -105,6 +142,18 @@
                                         echo json_encode($data);
                                     }
                                 } else {
+                                    // forward
+                                    $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                    if(mysqli_num_rows($allForwardsElan) > 0){
+                                        mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                    }
+
+                                    // payment
+                                    $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                    if(mysqli_num_rows($allPaymentElan) > 0){
+                                        mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                    }
+                                    
                                     $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
 
                                     if($allElan){
@@ -135,6 +184,18 @@
                                     $allDeadlinesElan=mysqli_query($connect, "DELETE FROM deadline WHERE elan_id='$postId'");
 
                                     if($allDeadlinesElan){
+                                        // forward
+                                        $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                        if(mysqli_num_rows($allForwardsElan) > 0){
+                                            mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                        }
+
+                                        // payment
+                                        $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                        if(mysqli_num_rows($allPaymentElan) > 0){
+                                            mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                        }
+
                                         $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
 
                                         if($allElan){
@@ -154,6 +215,18 @@
                                         echo json_encode($data);
                                     }
                                 } else {
+                                    // forward
+                                    $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                    if(mysqli_num_rows($allForwardsElan) > 0){
+                                        mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                    }
+
+                                    // payment
+                                    $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                    if(mysqli_num_rows($allPaymentElan) > 0){
+                                        mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                    }
+                                    
                                     $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
 
                                     if($allElan){
@@ -179,6 +252,18 @@
                                 $allDeadlinesElan=mysqli_query($connect, "DELETE FROM deadline WHERE elan_id='$postId'");
 
                                 if($allDeadlinesElan){
+                                    // forward
+                                    $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                    if(mysqli_num_rows($allForwardsElan) > 0){
+                                        mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                    }
+
+                                    // payment
+                                    $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                    if(mysqli_num_rows($allPaymentElan) > 0){
+                                        mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                    }
+
                                     $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
 
                                     if($allElan){
@@ -198,6 +283,18 @@
                                     echo json_encode($data);
                                 }
                             } else {
+                                // forward
+                                $allForwardsElan=mysqli_query($connect, "SELECT * FROM forward WHERE elanID='$postId'");
+                                if(mysqli_num_rows($allForwardsElan) > 0){
+                                    mysqli_query($connect, "DELETE FROM forward WHERE elanID='$postId'");
+                                }
+
+                                // payment
+                                $allPaymentElan=mysqli_query($connect, "SELECT * FROM payment WHERE elanID='$postId'");
+                                if(mysqli_num_rows($allPaymentElan) > 0){
+                                    mysqli_query($connect, "DELETE FROM payment WHERE elanID='$postId'");
+                                }
+
                                 $allElan=mysqli_query($connect, "DELETE FROM elan WHERE elan_id='$postId'");
 
                                 if($allElan){
