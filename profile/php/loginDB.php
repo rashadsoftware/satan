@@ -19,13 +19,24 @@
 				
 				if(mysqli_num_rows($query) > 0){
 
-					$user_data=mysqli_fetch_array($query);
-					
+					$user_data=mysqli_fetch_array($query);					
 					$user_password=$user_data["user_password"];
 					$user_email=$user_data["user_email"];
 					
 					if($user_email==$inputEmail && $user_password==$inputPassword){
                         $_SESSION["ProfilEmail"]=$inputEmail;
+
+						if(!empty($_POST["remember"])){
+							setcookie("email", $_POST["email"], time()+3600*24*7);
+							setcookie("password", $_POST["password"], time()+3600*24*7);
+						} else {
+							if(isset($_COOKIE["email"])){
+								setcookie("email", "");
+							}
+							if(isset($_COOKIE["password"])){
+								setcookie("password", "");
+							}
+						}
 
                         $data["ok"]="ok";								
                         echo json_encode($data);
