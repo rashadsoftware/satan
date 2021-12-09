@@ -38,7 +38,7 @@
 
         <!-- Bootstrap JS -->
         <script src="../assets/js/main2.js"></script>
-        <script src="../assets/js/profile2.js"></script>	
+        <script src="../assets/js/profile3.js"></script>	
 
 		<script>
 			$(function(){

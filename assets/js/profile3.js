@@ -38,7 +38,7 @@ $(function () {
 			},
 		});
 	});
-	
+
 	// Password Optional Form
 	$("#password-optional").on("submit", function (e) {
 		e.preventDefault();
@@ -67,7 +67,7 @@ $(function () {
 			},
 		});
 	});
-	
+
 	// Password Change Form
 	$("#password-change").on("submit", function (e) {
 		e.preventDefault();
@@ -86,6 +86,64 @@ $(function () {
 					}, 2000);
 				} else if (data.logout) {
 					window.location.assign("index");
+				} else {
+					$("#alertDashboard").removeClass("alert-success");
+					$("#alertDashboard").addClass("alert-danger");
+				}
+
+				$("#alertDashboard").css("display", "block");
+				$("#alertDashboard").html(data.text);
+			},
+		});
+	});
+
+	// activate elanlar
+	$(".activate").click(function (e) {
+		e.preventDefault();
+
+		var getID = $(this).attr("data-id");
+
+		$.ajax({
+			method: "POST",
+			url: "php/activate.php",
+			data: { getID: getID },
+			dataType: "json",
+			success: function (data) {
+				if (data.ok) {
+					$("#alertDashboard").removeClass("alert-danger");
+					$("#alertDashboard").addClass("alert-success");
+					setTimeout(function () {
+						location.reload();
+					}, 3000);
+				} else {
+					$("#alertDashboard").removeClass("alert-success");
+					$("#alertDashboard").addClass("alert-danger");
+				}
+
+				$("#alertDashboard").css("display", "block");
+				$("#alertDashboard").html(data.text);
+			},
+		});
+	});
+
+	// delete elanlar
+	$(".delete").click(function (e) {
+		e.preventDefault();
+
+		var getID = $(this).attr("data-id");
+
+		$.ajax({
+			method: "POST",
+			url: "php/delete-elanlar.php",
+			data: { getID: getID },
+			dataType: "json",
+			success: function (data) {
+				if (data.ok) {
+					$("#alertDashboard").removeClass("alert-danger");
+					$("#alertDashboard").addClass("alert-success");
+					setTimeout(function () {
+						location.reload();
+					}, 3000);
 				} else {
 					$("#alertDashboard").removeClass("alert-success");
 					$("#alertDashboard").addClass("alert-danger");

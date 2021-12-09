@@ -155,7 +155,7 @@
                                             echo'    </div>
                                                     <div class="item-bottom-content">
                                                         <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
-                                                        <a href="php/delete-elanlar?id='.$active_array[$ac]['elan_id'].'" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Elanı sil</a>
+                                                        <div style="color:var(--main-color); cursor:pointer" class="delete" data-id="'.$active_array[$ac]['elan_id'].'"><i class="fas fa-trash-alt"></i> Elanı sil</div>
                                                     </div>
                                                 </div>
                                             </div>';
@@ -306,10 +306,9 @@
                                                             echo'   <p>'.$city_all["city_title"].', '.$timeElan.'</p>';
                                                         }
                                             echo'    </div>
-                                                    <div class="item-bottom-content">
-                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
-                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-trash-alt"></i> Sil</a>
-                                                    </div>
+                                                        <div class="item-bottom-content">
+                                                            <div style="color:var(--main-color); cursor:pointer" class="activate" data-id="'.$deactive_array[$ac]['elan_id'].'"><i class="fas fa-sync"></i> Aktivləşdir</div>
+                                                        </div>
                                                 </div>
                                             </div>';
                                   }
