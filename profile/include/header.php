@@ -1,8 +1,16 @@
 <?php
+	error_reporting(0);
+	session_start();
+	
 	include("../assets/include/connectDB.php");
 	include("../assets/include/function.php");
 	$query=mysqli_query($connect,"SELECT * FROM companies WHERE company_id='1' ");
 	$data=mysqli_fetch_array($query);
+
+	// fetch data
+	$session_email=$_SESSION["ProfilEmail"];
+	$query=mysqli_query($connect,"SELECT * FROM users WHERE user_email='$session_email' AND user_status='user' ");
+	$user_data=mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
 <html lang="az">

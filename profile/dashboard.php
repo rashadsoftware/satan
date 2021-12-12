@@ -8,12 +8,6 @@
 
     include_once 'include/header.php';
 
-    $session_email=$_SESSION["ProfilEmail"];
-	
-	// fetch data
-	$query=mysqli_query($connect,"SELECT * FROM users WHERE user_email='$session_email' AND user_status='user' ");
-	$user_data=mysqli_fetch_array($query);
-
 	// fetch all elanlar
     $active_array=array();
     $deactive_array=array();
@@ -154,7 +148,7 @@
                                                         }
                                             echo'    </div>
                                                     <div class="item-bottom-content">
-                                                        <a href="#" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
+                                                        <a href="add?id='.$active_array[$ac]['elan_id'].'" style="color:var(--main-color)"><i class="fas fa-pencil-alt"></i> Düzəliş et</a>
                                                         <div style="color:var(--main-color); cursor:pointer" class="delete" data-id="'.$active_array[$ac]['elan_id'].'"><i class="fas fa-trash-alt"></i> Elanı sil</div>
                                                     </div>
                                                 </div>
