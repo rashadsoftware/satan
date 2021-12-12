@@ -1226,9 +1226,15 @@ $(function () {
 	});
 
 	// image preview
+	var all_image_array = [];
 	if (window.File && window.FileList && window.FileReader) {
 		$("#files").on("change", function (e) {
-			$(".pip").remove();
+			// insert to array when change type file
+			for (var i = 0; i < $(this).get(0).files.length; ++i) {
+				all_image_array.push($(this).get(0).files[i].name);
+			}
+
+			$("#allImages").val(all_image_array);
 
 			var files = e.target.files,
 				filesLength = files.length;

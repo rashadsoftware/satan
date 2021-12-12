@@ -115,11 +115,12 @@
                         <div class="text-danger" id="errTextareaAdd"></div>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" multiple name="files[]" id="files" accept="image/jpeg, image/png, image/gif," aria-describedby="helpImage" required title="Şəkillər toplu halda seçilməlidir. Sonradan əlavə olunan şəkil əvvəldən toplu halda yüklənmiş şəkilləri silir.">
+                        <input type="file" class="custom-file-input mb-2" multiple name="files[]" id="files" accept="image/jpeg, image/png, image/gif," aria-describedby="helpImage" required title="Şəkillər toplu halda seçilməlidir. Sonradan əlavə olunan şəkil əvvəldən toplu halda yüklənmiş şəkilləri silir.">
                         <label class="custom-file-label" for="files">Şəkil toplu halda seçin</label>
                         <small id="helpImage" class="form-text text-muted">Bir şəkilin maksimal həcmi 10 MB olmalıdır</small>
                         <div class="text-danger w-100" id="errMultiImg"></div>
                     </div>
+                    <input type="hidden" name="allImages" value="" id="allImages">
                     <p class="mt-3">Siz elan yerləşdirərkən satan.az saytının <a href="rules">qaydalarıyla</a> razı olduğunuzu təsdiqləmiş olursunuz.</p>
                     <button type="submit" class="btn btn-primary text-capitalize custom-button">Elanı yarat</button>
                 </form>

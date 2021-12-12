@@ -50,7 +50,7 @@
 		<!-- summernote js -->
 		<script src="../plugin/summernote/summernote-lite.js"></script>
 
-        <script src="../js/main2.js"></script>
+        <script src="../js/main3.js"></script>
 
 		<script>
 			// jquery 

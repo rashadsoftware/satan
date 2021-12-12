@@ -128,20 +128,18 @@
                         <div class="text-danger" id="errTextareaAdd"></div>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" multiple name="files[]" id="files" accept="image/jpeg, image/png, image/gif," aria-describedby="helpImage" required title="Şəkillər toplu halda seçilməlidir. Sonradan əlavə olunan şəkil əvvəldən toplu halda yüklənmiş şəkilləri silir.">
+                        <input type="file" class="custom-file-input mb-2" multiple name="files[]" id="files" accept="image/jpeg, image/png, image/gif," aria-describedby="helpImage" required title="Şəkillər toplu halda seçilməlidir. Sonradan əlavə olunan şəkil əvvəldən toplu halda yüklənmiş şəkilləri silir.">
                         <?php
                             $arrayImg=array();
-                            $arrayID=array();
 
                             $query_img=mysqli_query($connect,"SELECT * FROM img WHERE elan_id='$getID' ");
                             while($img_data=mysqli_fetch_array($query_img)){ 
                                 array_push($arrayImg, $img_data['img_path']);
-                                array_push($arrayID, $img_data['img_id']);
                             }
 
                             for($m=0; $m < count($arrayImg); $m++){
                                 echo '
-                                <span class="pip mt-4" id="'.$arrayID[$m].'">
+                                <span class="pip">
                                     <img src="../img/advert/'.$arrayImg[$m].'" alt="" class="imageThumb">
                                     <span class="remove"><i class="fa fa-times"></i></span>
                                 </span>';
@@ -151,6 +149,8 @@
                         <small id="helpImage" class="form-text text-muted">Bir şəkilin maksimal həcmi 10 MB olmalıdır</small>
                         <div class="text-danger w-100" id="errMultiImg"></div>
                     </div>
+                    <input type="hidden" name="hiddenInput" value="<?php echo $getID; ?>">
+                    <input type="hidden" name="allImages" value="" id="allImagesProfile">
                     <p class="mt-3">Siz elan yerləşdirərkən satan.az saytının <a href="rules">qaydalarıyla</a> razı olduğunuzu təsdiqləmiş olursunuz.</p>
                     <button type="submit" class="btn btn-primary text-capitalize custom-button">Elanı yarat</button>
                 </form>
@@ -186,9 +186,28 @@
             $(this).parent(".pip").remove();
         });
 
+        var all_image_array_profile = [];
+
+        <?php
+            $query_img_js=mysqli_query($connect,"SELECT * FROM img WHERE elan_id='$getID' ");
+            while($img_data_js=mysqli_fetch_array($query_img_js)){ ?>
+                all_image_array_profile.push("<?php echo $img_data_js['img_path']?>");
+        <?php    }
+        ?>
+
+        $("#allImagesProfile").val(all_image_array_profile);
+
         // image preview
         if (window.File && window.FileList && window.FileReader) {
             $("#files").on("change", function (e) {
+                             
+                // insert to array when change type file
+                for (var i = 0; i < $(this).get(0).files.length; ++i) {
+                    all_image_array_profile.push($(this).get(0).files[i].name);
+                }
+
+                $("#allImagesProfile").val(all_image_array_profile);
+
                 var files = e.target.files,
                     filesLength = files.length;
                 for (var i = 0; i < filesLength; i++) {
