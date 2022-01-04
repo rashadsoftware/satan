@@ -1,6 +1,6 @@
 <?php
 include("../connectDB.php");     
-$getReference=$_GET["reference"];
+$getReference=$_POST["reference"];
 
 $merchant_list=mysqli_query($connect, "SELECT *  FROM merchant WHERE merchant_reference='$getReference' ");
 $merchant_item=mysqli_fetch_array($merchant_list);

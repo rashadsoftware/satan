@@ -71,6 +71,17 @@
         }
     }
 
+    // Control Select
+    function controlSelect($valueSelect, $nameSelect){
+        if(empty($valueSelect)){
+			$data["text"]=$nameSelect." mütləq seçilməlidir";
+			
+			echo json_encode($data);
+		} else {
+            return true;
+        }
+    }
+
     // Control Email
     function controlEmail($valueEmail, $nameEmail){
         if(empty($valueEmail)){
@@ -83,6 +94,30 @@
             } else {
                 $data["text"]=$nameEmail." etibarlı deyil. Yenidən cəhd edin!";
 				
+				echo json_encode($data);
+            }
+        }
+    }
+
+    // Control Phone
+    function controlPhone($valuePhone, $namePhone, $countPhone){
+        if(empty($valuePhone)){
+			$data["text"]=$namePhone." boş buraxılmamalıdır";
+			
+			echo json_encode($data);
+		} else {
+            if(strlen($valuePhone) == $countPhone){
+                // only enter aphabetical letters
+				if(preg_replace("/0[0-9]{9}/", "",$valuePhone)==true){
+					$data["text"]=$namePhone." ancaq rəqəmlərdən ibarət olmalıdır və göstərilən standartlara cavab verməlidir.";
+
+					echo json_encode($data);
+				} else {
+                    return true;
+                }
+            } else {
+                $data["text"]=$namePhone." minimum ".$countPhone." karakter olmalıdır.";
+						
 				echo json_encode($data);
             }
         }

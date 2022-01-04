@@ -38,7 +38,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-xl-8 order-2 order-xl-1">
-                <form id="formAdd" autocomplete="off" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form id="formUpdate" autocomplete="off" enctype="multipart/form-data" class="needs-validation" novalidate>
                     <div class="form-group">
                         <label for="inputName">Adınız</label>
                         <input type="text" class="form-control name" id="inputName" name="inputName" placeholder="Adınızı daxil edin" minlength="2" required value="<?php echo $person_data['customer_name']  ?>">
@@ -140,7 +140,7 @@
                             for($m=0; $m < count($arrayImg); $m++){
                                 echo '
                                 <span class="pip">
-                                    <img src="../img/advert/'.$arrayImg[$m].'" alt="" class="imageThumb">
+                                    <img src="../img/advert/'.$arrayImg[$m].'" alt="" class="imageThumb" data-id="'.$arrayImg[$m].'">
                                     <span class="remove"><i class="fa fa-times"></i></span>
                                 </span>';
                             }
@@ -151,8 +151,7 @@
                     </div>
                     <input type="hidden" name="hiddenInput" value="<?php echo $getID; ?>">
                     <input type="hidden" name="allImages" value="" id="allImagesProfile">
-                    <p class="mt-3">Siz elan yerləşdirərkən satan.az saytının <a href="rules">qaydalarıyla</a> razı olduğunuzu təsdiqləmiş olursunuz.</p>
-                    <button type="submit" class="btn btn-primary text-capitalize custom-button">Elanı yarat</button>
+                    <button type="submit" class="btn btn-primary text-capitalize custom-button mt-4">Elanı yenilə</button>
                 </form>
                 <div class="row mt-3">
                     <div class="col-12">
@@ -173,7 +172,7 @@
                             <?php   }
                             ?>
                         </ul>
-                        <a href="rules" class="card-link">Saytın tam qaydaları</a>
+                        <a href="../rules" class="card-link">Saytın tam qaydaları</a>
                     </div>
                 </div>
             </div>
@@ -182,10 +181,6 @@
 </section>
 <script>
     $(function(){
-        $(".remove").click(function () {
-            $(this).parent(".pip").remove();
-        });
-
         var all_image_array_profile = [];
 
         <?php
@@ -196,6 +191,18 @@
         ?>
 
         $("#allImagesProfile").val(all_image_array_profile);
+
+        $(".remove").click(function () {
+            var del_element=$(this).parent(".pip").children("img").attr("data-id");
+
+            all_image_array_profile=jQuery.grep(all_image_array_profile, function(value) {
+                return value != del_element;
+            });
+
+            $(this).parent(".pip").remove();
+
+            $("#allImagesProfile").val(all_image_array_profile);
+        });
 
         // image preview
         if (window.File && window.FileList && window.FileReader) {
@@ -217,10 +224,10 @@
                         var file = e.target;
                         $(
                             '<span class="pip">' +
-                                '<img class="imageThumb" src="' +
+                                '<img class="imageThumb" data-id="' + f.name + '" src="' +
                                 e.target.result +
                                 '" title="' +
-                                file.name +
+                                f.name +
                                 '"/>' +
                                 '<br/><span class="remove"><i class="fa fa-times"></i></span>' +
                                 "</span>"
@@ -235,6 +242,33 @@
         } else {
             alert("Your browser doesn't support to File API");
         }
+
+        // form update
+        $("#formUpdate").submit(function (e) {
+			e.preventDefault();
+
+            $.ajax({
+                url: "php/form-update.php",
+                type: "post",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data.ok) {
+                        window.location.assign(data.ok);
+                        $(".form-control").val(" ");
+                        $("input [type=file]").val(" ");
+                        $(".pip").remove();
+                        $("#errorAdd").css("display", "none");
+                    } else {
+                        $("#errorAdd").css("display", "block");
+                        $("#errorAdd").html(data.text);
+                    }
+                },
+            });
+        })
     });
 </script>
 

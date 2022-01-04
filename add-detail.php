@@ -347,7 +347,7 @@ if($_GET["action"]=="preview"){
       <div class="modal-body">
         <p id="textAdd"></p>
 
-        <form id="formPayment" method="POST" action="../include/payment/sms_sample.php">            
+        <form id="formPayment">            
             <h6>Xidmət Növü</h6>            
             <div id="priceAdvert"></div>
             <h6 class="mt-4">Ödəniş Üsulu</h6>
@@ -371,7 +371,6 @@ if($_GET["action"]=="preview"){
 
 <script>
     $(function(){
-        /*
         $("#formPayment").submit(function(e){
             e.preventDefault();
 
@@ -391,10 +390,8 @@ if($_GET["action"]=="preview"){
                         textError.css("display", "none");
                         textError.text("");  
 
-                        //window.location.href = '../include/payment/sms_sample.php';
-
                         $.ajax({
-                            url: "../include/payment/sms_sample.php",
+                            url: "../include/payment/fetch_data.php",
                             type: "post",
                             data: $(this).serialize(),
                             dataType: "json",
@@ -404,18 +401,12 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    $("#errorText").removeClass("alert-danger");
-                                    $("#errorText").addClass("alert-success");
-                                    setTimeout(function () {
-                                        location.reload();
-                                    }, 2000);
+                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=simple';
+                                    $("#errorText").css("display", "none");
                                 } else {
-                                    $("#errorText").removeClass("alert-success");
-                                    $("#errorText").addClass("alert-danger");
+                                    $("#errorText").css("display", "block");
+                                    $("#errorText").html(data.text);
                                 }
-
-                                $("#errorText").css("display", "block");
-                                $("#errorText").html(data.text);
 
                                 $(".loading").css("display", "none");
                                 $("#btnText").css("display", "block");
@@ -432,10 +423,8 @@ if($_GET["action"]=="preview"){
                         textError.css("display", "none");
                         textError.text("");  
 
-                        //window.location.href = '../include/payment/sms_sample.php';
-
                         $.ajax({
-                            url: "../include/payment/payment.php",
+                            url: "../include/payment/fetch_data.php",
                             type: "post",
                             data: $(this).serialize(),
                             dataType: "json",
@@ -445,18 +434,15 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    $("#errorText").removeClass("alert-danger");
-                                    $("#errorText").addClass("alert-success");
-                                    setTimeout(function () {
-                                        location.reload();
-                                    }, 2000);
+                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=vip';
+                                    $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").removeClass("alert-success");
                                     $("#errorText").addClass("alert-danger");
-                                }
 
-                                $("#errorText").css("display", "block");
-                                $("#errorText").html(data.text);
+                                    $("#errorText").css("display", "block");
+                                    $("#errorText").html(data.text);
+                                }                                
 
                                 $(".loading").css("display", "none");
                                 $("#btnText").css("display", "block");
@@ -473,7 +459,6 @@ if($_GET["action"]=="preview"){
             }
             
         });
-        */
     })
 </script>
 

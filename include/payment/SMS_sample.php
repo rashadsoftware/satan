@@ -1,33 +1,7 @@
 <?php
-    if(isset($_POST)){
-        include("../connectDB.php"); 
-
-        echo $_POST["radioBank"]."</br>";
-        echo $_POST["radioPriceSimple"];
-
-        // elanin adi alinir
-        $elanID=$_POST["elanID"];
-        $elan_list=mysqli_query($connect, "SELECT * FROM elan WHERE elan_id='$elanID' AND elan_status='active' ");
-        $elan_data=mysqli_fetch_array($elan_list);
-
-        // forward price
-        $forward_simple=$_POST["radioPriceSimple"];
-        $order_list_simple=mysqli_query($connect, "SELECT * FROM order WHERE order_amount='$forward_simple' AND order_status='forward' ");
-        $order_data=mysqli_fetch_array($order_list_simple);
-
-        if (!$order_list_simple) {
-            printf("Error: %s\n", mysqli_error($connect));
-            exit();
-        }
-        
-        echo $order_data["order_price"];
-
-        
-
-        
-        
-
-        /*
+    if(isset($_GET)){
+        $data=$_GET['data'];
+        $price=$_GET['price'];
 
         $reference = rand(1000000000000000, 10000000000000000);
         $type = 'SMS';
@@ -36,18 +10,28 @@
         $amount = '1';
         $currency = '944';
         $biller = 'BLR0001';
-        $description = $elan_data["elan_name"];
+        
+        if($data == 'simple'){
+            if($price == 1){
+                $description='ireli_8';
+            } else if($price == 2){
+                $description='ireli_20';
+            } else {
+                $description='ireli_40';
+            }
+        } else {
+            $description='VIP_'.$price.'_AZN';
+        }
+
         $template = 'TPL0001';
         $language = 'az';
         //$callback = 'https://localhost/elan/4d7b3627-2d63-4820-9e92-c174c41cb6cc';
-        $callback = 'https://satan.az/include/payment/status_sample.php?'.$reference;
+        $callback = 'https://satan.az/include/payment/status_sample.php?';
         $extra = 'user_id='. 1;
         $secretKey = '55542542B9318FB4A7FD6F7DD8F1A506';
 
         $signature = base64_encode(md5("$reference"."$type"."$save"."$amount"."$currency"."$biller"."$description"."$template"."$language".$callback."$secretKey", true));
         $url = "https://sandbox.api.pay.yigim.az/payment/create?reference=$reference&type=$type&save=$save&amount=$amount&currency=$currency&biller=$biller&description=$description&template=$template&language=$language&callback=$callback";
-
-        mysqli_query($connect, "INSERT IGNORE INTO merchant (merchant_reference, merchant_signature) VALUES ('$reference', '$signature') ");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
@@ -73,8 +57,6 @@
 
         //echo $response->url."?reference=".$reference;
 
-        header("Location: ".$response->url);
-
-        */
-    }
+        header("Location: ".$response->url."?reference=".$reference);
+    }    
 ?>

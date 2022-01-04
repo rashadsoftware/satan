@@ -16,6 +16,8 @@
         $inputPrice=mysqli_real_escape_string($connect, trim($_POST["inputPrice"]));
         $textareaAdd=mysqli_real_escape_string($connect, trim($_POST["textareaAdd"]));
 
+		$allImages=mysqli_real_escape_string($connect, trim($_POST["allImages"]));
+
         // default value
         $customer_rand_id=rand(100,99999999);
         $elan_rand_id=rand(10000000,99999999);
