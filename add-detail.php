@@ -401,7 +401,7 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=simple';
+                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=simple&day='+data.day;
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").css("display", "block");
@@ -434,7 +434,7 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=vip';
+                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=vip&day='+data.day;
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").removeClass("alert-success");

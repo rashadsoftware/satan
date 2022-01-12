@@ -1,6 +1,5 @@
 <?php
     if(isset($_POST["radioPriceSimple"])){
-        include("../connectDB.php"); 
         $data=array();
 
         $value_simple=$_POST["radioPriceSimple"];
@@ -14,11 +13,11 @@
         }
 
         $data["ok"]="ok";		
-        $data["price"]=$price;										
+        $data["price"]=$price;	
+        $data["day"]=$value_simple;									
 		echo json_encode($data);
         
     } else if(isset($_POST["radioPriceVIP"])){
-        include("../connectDB.php"); 
         $data=array();
 
         $value_vip=$_POST["radioPriceVIP"];
@@ -32,7 +31,8 @@
         }
         
         $data["ok"]="ok";	
-        $data["price"]=$price;									
+        $data["price"]=$price;	
+        $data["day"]=$value_vip;								
 		echo json_encode($data);
     }
 ?>

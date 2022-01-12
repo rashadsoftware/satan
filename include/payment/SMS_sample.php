@@ -2,25 +2,22 @@
     if(isset($_GET)){
         $data=$_GET['data'];
         $price=$_GET['price'];
+        $day=$_GET['day'];
+
+        include("../connectDB.php");
 
         $reference = rand(1000000000000000, 10000000000000000);
         $type = 'SMS';
         //$token = rand(100000000, 1000000000);
         $save = 'n';
-        $amount = '1';
+        $amount = $price.'00';
         $currency = '944';
         $biller = 'BLR0001';
         
         if($data == 'simple'){
-            if($price == 1){
-                $description='ireli_8';
-            } else if($price == 2){
-                $description='ireli_20';
-            } else {
-                $description='ireli_40';
-            }
+            $description='elani_ireli_cek';
         } else {
-            $description='VIP_'.$price.'_AZN';
+            $description='VIP_'.$day.'_gn';
         }
 
         $template = 'TPL0001';
@@ -32,6 +29,8 @@
 
         $signature = base64_encode(md5("$reference"."$type"."$save"."$amount"."$currency"."$biller"."$description"."$template"."$language".$callback."$secretKey", true));
         $url = "https://sandbox.api.pay.yigim.az/payment/create?reference=$reference&type=$type&save=$save&amount=$amount&currency=$currency&biller=$biller&description=$description&template=$template&language=$language&callback=$callback";
+
+        mysqli_query($connect,"INSERT IGNORE INTO merchant (merchant_reference, merchant_signature) VALUES ('$reference', '$signature')");
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
@@ -57,6 +56,8 @@
 
         //echo $response->url."?reference=".$reference;
 
-        header("Location: ".$response->url."?reference=".$reference);
+        mysqli_close($connect);
+
+        header("Location: ".$response->url);
     }    
 ?>
