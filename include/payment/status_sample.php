@@ -33,6 +33,10 @@ if(isset($_GET)){
     //header("Location: ".$response->url);
 }
 /*
+4724921526700780
+01/25
+123
+
 $url = "https://sandbox.api.pay.yigim.az/payment/status?reference=5695171321894062";
 
 $ch = curl_init();

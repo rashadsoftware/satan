@@ -17,7 +17,7 @@
         if($data == 'simple'){
             $description='elani_ireli_cek';
         } else {
-            $description='VIP_'.$day.'_gn';
+            $description='VIP_'.$day.'_gun';
         }
 
         $template = 'TPL0001';
@@ -27,7 +27,7 @@
         $extra = 'user_id='. 1;
         $secretKey = '55542542B9318FB4A7FD6F7DD8F1A506';
 
-        $signature = base64_encode(md5("$reference"."$type"."$save"."$amount"."$currency"."$biller"."$description"."$template"."$language".$callback."$secretKey", true));
+        $signature = base64_encode(md5("$reference"."$type"."$save"."$amount"."$currency"."$biller"."$description"."$template"."$language"."$callback"."$secretKey", true));
         $url = "https://sandbox.api.pay.yigim.az/payment/create?reference=$reference&type=$type&save=$save&amount=$amount&currency=$currency&biller=$biller&description=$description&template=$template&language=$language&callback=$callback";
 
         mysqli_query($connect,"INSERT IGNORE INTO merchant (merchant_reference, merchant_signature) VALUES ('$reference', '$signature')");
