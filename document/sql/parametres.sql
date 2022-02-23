@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2021 at 06:23 AM
--- Server version: 5.7.33-36
+-- Generation Time: Feb 22, 2022 at 12:50 AM
+-- Server version: 5.7.35-38
 -- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `parametres` (
 --
 
 INSERT INTO `parametres` (`parametres_id`, `parametres_key`, `parametres_title`, `parametres_value`, `parametres_raiting`) VALUES
-(8, 'services', 'Elanı qaldırma', 'Elanı qaldırmaqla elan öndə yerləşdirilir, tamamilə yenilənir, və axtarışın nəticələrində digər elanlardan öndə gəlir. \r\n\r\nSayta daim yeni elanlar əlavə olunduğundan əvvəlki elanlar geridə qalır və axtarış zamanı tapmaq çətinləşir. Nəticədə elanın effekti aşağı düşür. Elanı qaldırma xidməti elanı yenidən öndə yerləşdirərək yenilənməsini təmin edir.', 'simple'),
+(8, 'services', 'Elanı irəli çəkmək', 'Elanı qaldırmaqla elan öndə yerləşdirilir, tamamilə yenilənir, və axtarışın nəticələrində digər elanlardan öndə gəlir. \r\n\r\nSayta daim yeni elanlar əlavə olunduğundan əvvəlki elanlar geridə qalır və axtarış zamanı tapmaq çətinləşir. Nəticədə elanın effekti aşağı düşür. Elanı qaldırma xidməti elanı yenidən öndə yerləşdirərək yenilənməsini təmin edir.', 'simple'),
 (10, 'services', 'Premium Elan', 'Premium elanlar saytda birinci səhifədə, və öndə yerləşdirilir, axtarış zamanı digər adi elanlardan öndə gəlir. Nəticədə sayta daxil olan hər bir istifadəçi tərəfindən baxılır, digər elanlara nisbətən tez tapılır və daha çox baxılır. Əgər satdığınız məhsulun daha tez satılmasını istəyirsinisə bu xidmətdən yararlanmağınız məsləhətdir.\r\n\r\nÖdəniş edildikdən sonra istifadəçi istəyinə uyğun şəkillərin sayını artıra bilər.\r\n\r\nUzunmüddətli ödənişlər üçün endirimlər edilir.', 'premium'),
 (11, 'services', 'VIP Elan', 'VIP-elanlar ayrıca blokda yerləşdirilir. VIP müddət başa çatanadək bu elanlar 2 siyahıda, VIP-elanların siyahısında və adi elanların siyahısında görsənir. VIP müddət başa çatdıqdan sonra adi elanların siyahısında qalır. VIP blokdakı elanlar baş səhifədə və eyni kateqoriyalı elanların axtarışı zamanı bütün səhifələrdə göstərilir. Nəticədə sayta daxil olan hər bir istifadəçi tərəfindən baxılır və axtarış zamanı 1-ci səhifədə təqdim olunur. Vip elanlar, əlavə olaraq saytda Təcili, seçmə elanlar blokuna əlavə edilir.', 'vip'),
 (12, 'contact', '', 'Təklif və Suallarınız üçün elektron adresimiz:', ''),

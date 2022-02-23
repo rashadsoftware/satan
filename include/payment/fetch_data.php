@@ -30,7 +30,7 @@
             $price="12";
         }
         
-        $data["ok"]="ok";	
+        $data["ok"]="ok";
         $data["price"]=$price;	
         $data["day"]=$value_vip;								
 		echo json_encode($data);

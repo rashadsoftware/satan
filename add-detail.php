@@ -401,7 +401,8 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=simple&day='+data.day;
+                                   // window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=simple&day='+data.day;
+                                    window.location.href="../include/payment/kapitalbank/createorder";
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").css("display", "block");
@@ -434,7 +435,8 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=vip&day='+data.day;
+                                    //window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=vip&day='+data.day;
+                                    window.location.href="../include/payment/kapitalbank/createorder";
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").removeClass("alert-success");

@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 28, 2021 at 06:22 AM
--- Server version: 5.7.33-36
+-- Generation Time: Feb 22, 2022 at 12:49 AM
+-- Server version: 5.7.35-38
 -- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `favorites` (
   `favorites_ip` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   `elan_id` int(250) NOT NULL,
   PRIMARY KEY (`favorites_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=803 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=836 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 
 --
 -- Dumping data for table `favorites`
@@ -98,7 +98,24 @@ INSERT INTO `favorites` (`favorites_id`, `favorites_ip`, `elan_id`) VALUES
 (798, '185.26.184.146', 20805537),
 (799, '5.44.37.140', 16944496),
 (800, '94.20.233.130', 73340058),
-(802, '77.244.126.169', 69376246);
+(802, '77.244.126.169', 69376246),
+(803, '185.129.0.2', 3604286),
+(806, '185.129.0.2', 97413106),
+(807, '185.129.0.2', 5696322),
+(808, '185.129.0.2', 16944496),
+(809, '185.129.0.2', 15652211),
+(810, '185.129.0.2', 11827487),
+(813, '185.129.0.2', 10412686),
+(814, '185.129.0.2', 9547666),
+(815, '194.135.166.241', 43660087),
+(817, '5.44.39.33', 22449308),
+(820, '194.135.167.216', 51553649),
+(823, '194.135.167.216', 34268116),
+(825, '5.197.236.50', 93568649),
+(828, '82.194.23.47', 99210793),
+(829, '82.194.23.47', 22456430),
+(834, '82.194.23.47', 46381798),
+(835, '82.194.23.47', 17708611);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
