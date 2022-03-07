@@ -400,9 +400,9 @@ if($_GET["action"]=="preview"){
                                 $("#btnText").css("display", "none");
                             },
                             success: function (data) {
-                                if (data.ok) {
-                                   // window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=simple&day='+data.day;
-                                    window.location.href="../include/payment/kapitalbank/createorder";
+                                if (data.ok) {                                   
+                                    //window.location.href="https://satan.az/include/payment/kapitalbank/CreateOrder.php";
+                                    window.location.href="http://localhost/elanlar/include/payment/kapitalbank/CreateOrder.php";
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").css("display", "block");
@@ -435,8 +435,8 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    //window.location.href = '../include/payment/sms_sample.php?price='+data.price+'&data=vip&day='+data.day;
-                                    window.location.href="../include/payment/kapitalbank/createorder";
+                                    //window.location.href="https://satan.az/include/payment/kapitalbank/CreateOrder.php";
+                                    window.location.href="http://localhost/elanlar/include/payment/kapitalbank/CreateOrder.php";
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").removeClass("alert-success");
