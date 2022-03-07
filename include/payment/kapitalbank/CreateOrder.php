@@ -2,7 +2,7 @@
 	$serviceUrl = "https://e-commerce.kapitalbank.az:5443/exec";
 	$cert = __DIR__."/testmerchant.crt";
 	$key = __DIR__."/merchant_name.key";
-	$merchant_id = 'E1000010';
+	$merchant_id = 'E1230012';
 	$language = 'AZ';
 
     $order_data = array(
@@ -61,7 +61,7 @@
      
         $array_data = json_decode(json_encode(simplexml_load_string($data)), true);
 
-		$OrderID = $array_data['Response']['Order']['OrderID'];
+		    $OrderID = $array_data['Response']['Order']['OrderID'];
         $SessionID = $array_data['Response']['Order']['SessionID'];
         $paymentBaseUrl = $array_data['Response']['Order']['URL'];
 

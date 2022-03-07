@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 22, 2022 at 12:50 AM
--- Server version: 5.7.35-38
--- PHP Version: 7.1.33
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 07, 2022 at 10:04 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shamil6883_elan`
+-- Database: `elanlar`
 --
 
 -- --------------------------------------------------------
@@ -26,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `suboptions`
 --
 
+DROP TABLE IF EXISTS `suboptions`;
 CREATE TABLE IF NOT EXISTS `suboptions` (
   `suboptions_id` int(250) NOT NULL AUTO_INCREMENT,
   `options_id` int(250) NOT NULL,
@@ -1522,6 +1524,7 @@ INSERT INTO `suboptions` (`suboptions_id`, `options_id`, `suboptions_title`, `su
 (1571, 124, 'C 280', 'c-280'),
 (1572, 124, 'C-Class', 'c-class'),
 (1573, 124, 'S 350', 's-350');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

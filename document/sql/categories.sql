@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 22, 2022 at 12:48 AM
--- Server version: 5.7.35-38
--- PHP Version: 7.1.33
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 07, 2022 at 10:03 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shamil6883_elan`
+-- Database: `elanlar`
 --
 
 -- --------------------------------------------------------
@@ -26,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `categories`
 --
 
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `category_id` int(250) NOT NULL AUTO_INCREMENT,
   `category_title` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
@@ -50,6 +52,7 @@ INSERT INTO `categories` (`category_id`, `category_title`, `category_seflink`, `
 (24, 'Nəqliyyat', 'neqliyyat', '<i class=\"fas fa-car-alt\"></i>', 'aa81dc36100922881a2c896a4fde9f3a.png'),
 (25, 'Uşaq aləmi', 'usaq-alemi', '<i class=\"fas fa-baby-carriage\"></i>', '02c1cf7923d9d7eaaa4c059255a32ce7.png'),
 (26, 'Hobbi və Asudə', 'hobbi-ve-asude', '<i class=\"fas fa-dumbbell\"></i>', 'hobby.png');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

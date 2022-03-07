@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 22, 2022 at 12:50 AM
--- Server version: 5.7.35-38
--- PHP Version: 7.1.33
+-- Host: 127.0.0.1:3306
+-- Generation Time: Mar 07, 2022 at 10:03 PM
+-- Server version: 5.7.36
+-- PHP Version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `shamil6883_elan`
+-- Database: `elanlar`
 --
 
 -- --------------------------------------------------------
@@ -26,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `forward`
 --
 
+DROP TABLE IF EXISTS `forward`;
 CREATE TABLE IF NOT EXISTS `forward` (
   `forward_id` int(250) NOT NULL AUTO_INCREMENT,
   `elanID` int(20) NOT NULL,
@@ -36,14 +38,7 @@ CREATE TABLE IF NOT EXISTS `forward` (
   `forward_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`forward_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
-
---
--- Dumping data for table `forward`
---
-
-INSERT INTO `forward` (`forward_id`, `elanID`, `forward_key`, `forward_value`, `forward_status`, `forward_start_time`, `forward_time`) VALUES
-(49, 47749456, 'forward', '2', 'passive', '2021-11-27 07:33:00', '2021-11-09 19:23:14'),
-(50, 41592442, 'forward', '2', 'passive', '2021-11-27 01:33:00', '2021-11-09 19:25:23');
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
