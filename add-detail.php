@@ -131,7 +131,7 @@ if($_GET["action"]=="preview"){
             
             <div class="services">
                 <?php
-                    $elanForward=mysqli_query($connect,"SELECT * FROM forward WHERE elanID='$IDElan' AND forward_key='forward' ");
+                    $elanForward=mysqli_query($connect,"SELECT * FROM forward WHERE elanID='$IDElan' AND forward_key='simple' ");
                     if(mysqli_num_rows($elanForward) > 0){ ?>
                         <div class="services-item-active">
                             Elanı irəli çək
@@ -352,7 +352,7 @@ if($_GET["action"]=="preview"){
             <div id="priceAdvert"></div>
             <h6 class="mt-4">Ödəniş Üsulu</h6>
             <div class="custom-control custom-radio">
-                <input type="radio" id="radioBank" name="radioBank" class="custom-control-input" value="card">
+                <input type="radio" id="radioBank" class="custom-control-input" value="card" name="radioBank">
                 <label class="custom-control-label" for="radioBank">Bank kartı</label>
             </div>
             <input type="hidden" name="elanID" value="<?php echo $fetchArray["elan_id"] ?>">  
@@ -401,8 +401,8 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {                                   
-                                    //window.location.href="https://satan.az/include/payment/kapitalbank/CreateOrder.php";
-                                    window.location.href="http://localhost/elanlar/include/payment/kapitalbank/CreateOrder.php";
+                                    //window.location.href="https://satan.az/include/payment/kapitalbank/CreateOrder";
+                                    window.location.href="http://localhost/elanlar/include/payment/kapitalbank/CreateOrder";
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").css("display", "block");
@@ -435,8 +435,8 @@ if($_GET["action"]=="preview"){
                             },
                             success: function (data) {
                                 if (data.ok) {
-                                    //window.location.href="https://satan.az/include/payment/kapitalbank/CreateOrder.php";
-                                    window.location.href="http://localhost/elanlar/include/payment/kapitalbank/CreateOrder.php";
+                                    //window.location.href="https://satan.az/include/payment/kapitalbank/CreateOrder";
+                                    window.location.href="http://localhost/elanlar/include/payment/kapitalbank/CreateOrder";
                                     $("#errorText").css("display", "none");
                                 } else {
                                     $("#errorText").removeClass("alert-success");

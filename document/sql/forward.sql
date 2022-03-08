@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 07, 2022 at 10:03 PM
+-- Generation Time: Mar 08, 2022 at 02:21 AM
 -- Server version: 5.7.36
 -- PHP Version: 7.4.26
 
@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `forward` (
   `forward_status` varchar(20) COLLATE utf8_turkish_ci NOT NULL COMMENT 'active, passive',
   `forward_start_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `forward_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_ip` varchar(250) COLLATE utf8_turkish_ci NOT NULL,
   PRIMARY KEY (`forward_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_turkish_ci;
 COMMIT;
